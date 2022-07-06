@@ -1,0 +1,2 @@
+SELECT * FROM TAB01;
+INSERT INTO TAB01 values('홍길동');
