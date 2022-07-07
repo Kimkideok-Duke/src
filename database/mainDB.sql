@@ -9,11 +9,11 @@ CREATE TABLE project(
 	code char(8),
 	TYPE varchar2(30)
 );
-CREATE TABLE perm(
+CREATE TABLE member(
 	userNo NUMBER REFERENCES user(no),
 	projectNo NUMBER REFERENCES project(no),
-	grade char(1) CONSTRAINTS perm_grade_ck
-		CHECK (grade IN ('A','B','C'))
+	perm char(1) CONSTRAINTS member_perm_ck
+		CHECK (perm IN ('A','B','C'))
 );
 
 CREATE TABLE schedule(
@@ -27,6 +27,7 @@ CREATE TABLE schedule(
 
 CREATE TABLE comment(
 	
+	content varchar2()
 );
 
 INSERT INTO item values('플로우 차트');
