@@ -1,3 +1,4 @@
+DROP TABLE notice;
 CREATE TABLE notice(
 	noticeno NUMBER PRIMARY KEY,
 	pno NUMBER,
@@ -6,7 +7,7 @@ CREATE TABLE notice(
 	title varchar2(100) NOT NULL,
 	content varchar2(2000) NOT NULL,
 	creatdate DATE NOT NULL,
-	readcnt NUMBER NOT NULL
+	views NUMBER NOT NULL
 );
 SELECT * FROM notice;
 CREATE SEQUENCE notice_seq
