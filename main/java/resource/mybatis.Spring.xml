@@ -4,6 +4,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="Project" type="team5.vo.Project"/>
+		<typeAlias alias="account" type="team5.vo.Account"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="resource/team5Mapper.xml"/>
