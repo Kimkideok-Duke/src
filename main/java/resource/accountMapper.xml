@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="team5.dao.AccountDao">
+	<insert id="insertAccount" parameterType="account">
+		INSERT INTO account values(acc_seq.nextval, #{email}, #{id}, #{pw}, #{name}, sysdate, #{agree})
+	</insert>
+	<select id="checkid" resultType="string" parameterType="string">
+		SELECT count(*) isid
+		FROM account
+		WHERE id=#{id}
+	</select>
+	<select id="ismember" resultType="int" parameterType="account">
+		SELECT count(*) ismember
+		FROM account
+		WHERE id = #{id}
+		AND pw = #{pw}
+	</select>
+	<select id="getMypage_id" resultType="account" parameterType="string">
+		SELECT * FROM account WHERE id=#{id}
+	</select>
+	<update id="updatePw" parameterType="account">
+		UPDATE account
+		SET pw= #{pw}
+		WHERE id= #{id}
+	</update>
+</mapper>

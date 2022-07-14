@@ -26,6 +26,11 @@ public class Account {
 		this.name = name;
 		this.agree = agree;
 	}
+	
+	public Account(String id, String pw) {
+		this.id = id;
+		this.pw = pw;
+	}
 	public int getUserno() {
 		return userno;
 	}

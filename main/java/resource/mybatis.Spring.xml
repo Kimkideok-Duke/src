@@ -8,6 +8,7 @@
 	</typeAliases>
 	<mappers>
 		<mapper resource="resource/team5Mapper.xml"/>
+		<mapper resource="resource/accountMapper.xml"/>
 	</mappers>
 	
 </configuration>
