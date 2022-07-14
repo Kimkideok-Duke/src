@@ -26,7 +26,7 @@
 		width:30%;
 		height:auto;
 		margin:0 auto;
-		margin-top:10%;
+		margin-top:5%;
 	}
 	.page_title{
 		text-align:center;
