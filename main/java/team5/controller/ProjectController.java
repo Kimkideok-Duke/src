@@ -13,11 +13,23 @@ public class ProjectController {
 	@Autowired(required=false)
 	private ProjectService service;
 	
-	// http://localhost:8080/Team5/getProjectList.do
-	@RequestMapping("getProjectList.do")
+	// http://localhost:8080/Team5/chooseProject.do
+	@RequestMapping("chooseProject.do")
 	public String getProjectList(
 			@RequestParam(value="userno", defaultValue="10001") int userno, Model d) {
 		d.addAttribute("plist", service.getProjectList(userno));
 		return "WEB-INF/views/chooseProject.jsp";
+	}
+	
+	// http://localhost:8080/Team5/newProject.do
+	@RequestMapping("newProject.do")
+	public String newProject() {
+		return "";
+	}
+	
+	// http://localhost:8080/Team5/createProject.do
+	@RequestMapping("createProject.do")
+	public String createProject() {
+		return "";
 	}
 }

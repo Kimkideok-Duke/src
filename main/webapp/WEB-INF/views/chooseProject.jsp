@@ -41,21 +41,12 @@
 
 </div>
 <div class="container">
-   <form id="frm01" class="form-inline"  method="post">
-     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-       <input class="form-control mr-sm-2" name="subject" placeholder="제목" 
-       		value="${param.subject}"/>
-       <input class="form-control mr-sm-2" name="writer" placeholder="작성자" 
-       		value="${board.writer}"/>
-       		<!-- Board sch -->
-       <button class="btn btn-info" type="submit">Search</button>
-    </nav>
-   </form>
-      <select name='projects'>
-         <option value='' selected>-- 선택 --</option>
-   	   <c:forEach var="pj" items="${plist}">
-            <option value="${elist.title}">${elist.title}</option>
-         </c:forEach>
+    프로젝트 선택:<select name='projects'>
+      <option value='' selected>-- 선택 --</option>
+ 	   <c:forEach var="pj" items="${plist}">
+         <option value="${pj.title}">${pj.title}</option>
+      </c:forEach>
+      <option value="newpj">새 프로젝트</option>
     
 </div>
 </body>

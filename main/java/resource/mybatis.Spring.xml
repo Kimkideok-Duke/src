@@ -4,7 +4,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="project" type="team5.vo.Project"/>
-		<typeAlias alias="projectmember" type="team5.vo.ProjectMemberJoin"/>
+		<typeAlias alias="projectmemberjoin" type="team5.vo.ProjectMemberJoin"/>
 		<typeAlias alias="account" type="team5.vo.Account"/>
 		<typeAlias alias="notice" type="team5.vo.Notice"/>
 	</typeAliases>
