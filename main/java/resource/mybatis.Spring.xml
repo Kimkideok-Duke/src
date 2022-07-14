@@ -3,12 +3,14 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="Project" type="team5.vo.Project"/>
+		<typeAlias alias="project" type="team5.vo.Project"/>
+		<typeAlias alias="projectmember" type="team5.vo.ProjectMemberJoin"/>
 		<typeAlias alias="account" type="team5.vo.Account"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="resource/team5Mapper.xml"/>
 		<mapper resource="resource/accountMapper.xml"/>
+		<mapper resource="resource/projectMapper.xml"/>
 	</mappers>
 	
 </configuration>

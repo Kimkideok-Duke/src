@@ -5,6 +5,7 @@ CREATE TABLE PROJECT (
     purpose varchar2(50) NOT NULL,
     code char(8) NOT NULL UNIQUE
 );
+
 SELECT * FROM PROJECT;
 
 CREATE SEQUENCE seq_pno
@@ -12,10 +13,33 @@ CREATE SEQUENCE seq_pno
 			START WITH 1
 			MAXVALUE 9999;
 
-INSERT INTO PROJECT values (seq_pno.nextval, ?, ?, ?, ?);
+
 
 CREATE TABLE MEMBER (
     userno NUMBER NOT NULL,
     pno NUMBER NOT NULL,
     auth varchar2(50) NOT NULL
 );
+SELECT * FROM account;
+INSERT INTO MEMBER VALUES (10001, 2, 'host');
+
+SELECT * FROM MEMBER;
+
+/*
+INSERT INTO PROJECT values (seq_pno.nextval, #{title}, #{ptype}, #{purpose}, #{code})
+
+SELECT TITLE, p.PNO 
+FROM PROJECT p, MEMBER m 
+WHERE p.PNO = m.PNO
+AND m.USERNO = ${userno}
+
+
+INSERT INTO MEMBER VALUES (#{userno}, #{pno), 'member')
+INSERT INTO MEMBER VALUES (#{userno}, #{pno), 'host')
+*/
+INSERT INTO PROJECT values (seq_pno.nextval, '첫프로젝트', '타입', '목적', '12345678');
+
+SELECT * 
+FROM PROJECT p, MEMBER m 
+WHERE p.PNO = m.PNO
+AND USERNO = 10001;
