@@ -5,18 +5,24 @@ public class Project {
 	private String title;
 	private String ptype;
 	private String purpose;
-	private int code;
+	private String code;
 
 	public Project() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Project(int pno, String title, String ptype, String purpose, int code) {
+	public Project(int pno, String title, String ptype, String purpose, String code) {
 		super();
 		this.pno = pno;
 		this.title = title;
 		this.ptype = ptype;
 		this.purpose = purpose;
+		this.code = code;
+	}
+	
+	public Project(int pno, String code) {
+		super();
+		this.pno = pno;
 		this.code = code;
 	}
 	public int getPno() {
@@ -43,10 +49,10 @@ public class Project {
 	public void setPurpose(String purpose) {
 		this.purpose = purpose;
 	}
-	public int getCode() {
+	public String getCode() {
 		return code;
 	}
-	public void setCode(int code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 	

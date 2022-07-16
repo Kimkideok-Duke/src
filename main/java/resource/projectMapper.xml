@@ -9,6 +9,24 @@
 		WHERE p.PNO = m.PNO
 		AND USERNO = #{userno}
 	</select>
+	
+	<select id="joinProject" resultType="int" parameterType="string">
+		SELECT pno
+		FROM PROJECT
+		WHERE code=#{code}
+	</select>
+	
+	<insert id="createProject" parameterType="project">
+	 	INSERT INTO PROJECT values(seq_pno.nextval, #{title}, #{ptype}, #{purpose}, #{code})
+	</insert>
+	
+	<insert id="insertMemberHost" parameterType="member">
+		INSERT INTO MEMBER VALUES (#{userno}, #{pno}, #{auth})
+	</insert>
+	
+	<insert id="insertMember" parameterType="member">
+		INSERT INTO MEMBER VALUES (#{userno}, #{pno}, #{auth})
+	</insert>
 </mapper>
 
 

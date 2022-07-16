@@ -147,7 +147,7 @@ function isEmpty(arg){
 var dist = "${dist}";
 if(dist=="Y"){
 	alert("${loginId}님 로그인");
-	location.href="${path}/mypage2.do";
+	location.href="${path}/chooseProject.do";
 }
 if(dist=="N"){
 	alert("아아디/비밀번호가 다릅니다.");

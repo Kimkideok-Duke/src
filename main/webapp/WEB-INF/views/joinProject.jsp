@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Choose Project</title>
+<title>Join Project</title>
 <link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css" >
 <link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
 <style>
@@ -32,36 +32,33 @@
       
       --%>   
    });
-   function chooseProject(){
-	   var prj = document.querySelector("[name=projects]");
-		if (prj.value=="sel")
-		{
-			alert("프로젝트를 선택해주세요.")
-			return;
-		}
-		if(prj.value=="new"){
-			location.href="${path}/joinProjectPage.do";
-		}
-		else{
-			location.href="${path}/Project1.do";
-		}
+   
+   function joinProject(){
+	   var code = $("[name=code]").val();
+      location.href="${path}/joinProject.do?code="+code;
+	}
+   	
+   function createProject(){
+      location.href="${path}/createProjectPage.do";
 	}
 </script>
 </head>
 
 <body>
 <div class="jumbotron text-center">
-  <h2>프로젝트 선택</h2>
-
+  <h2>새 프로젝트 생성/선택</h2>
 </div>
 <div class="container">
-    프로젝트 선택:<select name='projects'>
-      <option value='sel' selected>-- 선택 --</option>
- 	   <c:forEach var="pj" items="${plist}">
-         <option value="${pj.title}">${pj.title}</option>
-      </c:forEach>
-      <option value="new">새 프로젝트</option>
-      <input type="button" id="btnSel" onclick="chooseProject()" value="선택">
+    <input type="text" name="code" placeholder="Enter CODE">
+    <input type="button" onclick="joinProject()" value="JOIN"><br>
+    <input type="button" onclick="createProject()" value="새프로젝트 생성">
 </div>
+<script>
+var isJoin = "${isJoin}"
+if(isJoin=="Y"){
+   var pno = "${pno}"
+   location.href="${path}/Project1.do"
+}
+</script>
 </body>
 </html>

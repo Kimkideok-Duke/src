@@ -5,6 +5,7 @@
 	<typeAliases>
 		<typeAlias alias="project" type="team5.vo.Project"/>
 		<typeAlias alias="projectmemberjoin" type="team5.vo.ProjectMemberJoin"/>
+		<typeAlias alias="member" type="team5.vo.Member"/>
 		<typeAlias alias="account" type="team5.vo.Account"/>
 		<typeAlias alias="notice" type="team5.vo.Notice"/>
 	</typeAliases>

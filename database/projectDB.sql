@@ -13,7 +13,7 @@ CREATE SEQUENCE seq_pno
 			START WITH 1
 			MAXVALUE 9999;
 
-
+SELECT * FROM ACCOUNT;
 
 CREATE TABLE MEMBER (
     userno NUMBER NOT NULL,
@@ -36,6 +36,10 @@ AND m.USERNO = ${userno}
 
 INSERT INTO MEMBER VALUES (#{userno}, #{pno), 'member')
 INSERT INTO MEMBER VALUES (#{userno}, #{pno), 'host')
+
+SELECT pno
+FROM PROJECT
+WHERE code=#{code}
 */
 INSERT INTO PROJECT values (seq_pno.nextval, '첫프로젝트', '타입', '목적', '12345678');
 
@@ -43,3 +47,7 @@ SELECT *
 FROM PROJECT p, MEMBER m 
 WHERE p.PNO = m.PNO
 AND USERNO = 10001;
+
+SELECT pno
+FROM PROJECT
+WHERE code='12345678';
