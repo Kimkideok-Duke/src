@@ -45,16 +45,15 @@ public class AccountController {
 	}
 	
 	// 약관동의하고 버튼 누르면 신규회원가입 페이지
-	// http://localhost:7080/Team5/join2.do
-	@RequestMapping("join2.do")
-	public String goJoin2() {
-		return "WEB-INF\\views\\join.jsp";
+	// http://localhost:7080/Team5/join2Ajax.do
+	@RequestMapping("join2Ajax.do")
+	public String goJoin2Ajax() {
+		return "WEB-INF\\views\\join2.jsp";
 	}
-	
-	// 아이디 중복체크
-	// http://localhost:7080/Team5/checkid.do
-	@RequestMapping("checkid.do")
-	public String checkId(@RequestParam(value = "id", defaultValue = "") String id, Model d) {
+	// 아이디 중복체크 ajax
+	// http://localhost:7080/Team5/checkidAjax.do
+	@RequestMapping("checkidAjax.do")
+	public String checkIdAjax(@RequestParam(value = "id", defaultValue = "") String id, Model d) {
 		String checkid = service.checkid(id);
 		if(checkid.equals("0")) {
 			d.addAttribute("idcheckresult", "Y");
@@ -63,16 +62,15 @@ public class AccountController {
 			d.addAttribute("idcheckresult", "N");
 			d.addAttribute("idvalue", id);
 		}
-		return "WEB-INF\\views\\join.jsp";
+		return "pageJsonReport";
 	}
-	
 	// 가입하기 버튼 (신규 계정 등록처리)
 	// http://localhost:7080/Team5/joinAccount.do
 	@RequestMapping("joinAccount.do")
 	public String joinAccount(Account ins, Model d) {
 		service.insertAccount(ins);
 		d.addAttribute("joinresult", "Y");
-		return "WEB-INF\\views\\join.jsp";
+		return "WEB-INF\\views\\join2.jsp";
 	}
 	
 	// 로그인 (아이디, 비밀번호 일치하는 회원 있는지 확인)
@@ -91,32 +89,6 @@ public class AccountController {
 		}
 		return "WEB-INF\\views\\login.jsp";
 	}
-	
-	// 마이페이지 호출
-	@RequestMapping("mypage.do")
-	public String mypage(HttpSession session, Model d) {
-		String id = (String)session.getAttribute("userId");
-		d.addAttribute("user", service.getMypage_id(id));
-		return "WEB-INF\\views\\mypage.jsp";
-	}
-	
-	// 비밀번호 변경페이지 호출
-	@RequestMapping("changePw.do")
-	public String changePw(HttpSession session,@RequestParam(value = "pw", defaultValue = "") String pw, Model d) {
-		String id = (String)session.getAttribute("userId");
-		int dist = service.ismember(new Account(id,pw));
-		if(dist==1) {
-			d.addAttribute("user",service.getMypage_id(id));
-			return "WEB-INF\\views\\change_pw.jsp";
-		}
-		if(dist==0) {
-			d.addAttribute("proc2", "N");
-			return "mypage.do";
-		}
-		d.addAttribute("proc", "");
-		return "mypage.do";
-	}
-	
 	// 비밀번호 변경
 	@RequestMapping("pwChange.do")
 	public String pwChange(HttpSession session, @RequestParam(value = "pw", defaultValue = "") String pw, Model d) {
@@ -125,7 +97,38 @@ public class AccountController {
 		d.addAttribute("proc3", "Y");
 		return "WEB-INF\\views\\change_pw.jsp";
 	}
-	
-	//e
+	//마이페이지 호출
+	// http://localhost:7080/Team5/mypage2.do
+	@RequestMapping("mypage2.do")
+	public String mypage2() {
+		return "WEB-INF\\views\\mypage2.jsp";
+	}
+	//마이페이지 ajax
+	// http://localhost:7080/Team5/mypageAjax.do
+	@RequestMapping("mypageAjax.do")
+	public String mypageAjax(HttpSession session, Model d) {
+		String id = (String)session.getAttribute("userId");
+		d.addAttribute("user", service.getMypage_id(id));
+		return "pageJsonReport";
+	}
+	//비밀번호 변경페이지 호출 ajax
+	// http://localhost:7080/Team5/goChangePwAjax.do
+	@RequestMapping("goChangePwAjax")
+	public String goChangePwAjax(HttpSession session, @RequestParam("pw") String inputPw, Model d) {
+		String id = (String)session.getAttribute("userId");
+		Account ac = service.getMypage_id(id);
+		if(ac.getPw().equals(inputPw)) {
+			d.addAttribute("valid", true);
+		}else {
+			d.addAttribute("valid", false);
+		}
+		return "pageJsonReport";
+	}
+	// 비밀번호 변경페이지 이동
+	// http://localhost:7080/Team5/goChangePwPage.do
+	@RequestMapping("goChangePwPage.do")
+	public String goChangePwPage() {
+		return "WEB-INF\\views\\change_pw.jsp";
+	}
 	
 }

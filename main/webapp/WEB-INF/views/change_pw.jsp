@@ -26,7 +26,7 @@
 		width:30%;
 		height:auto;
 		margin:0 auto;
-		margin-top:5%;
+		margin-top:10%;
 	}
 	.page_title{
 		text-align:center;
@@ -140,7 +140,7 @@ function pwcheck() {
 var proc3 = "${proc3}";
 if(proc3=="Y"){
 	alert("비밀번호가 변경되었습니다.\n마이페이지로 이동합니다.");
-	location.href="${path}/mypage.do";
+	location.href="${path}/mypage2.do";
 }
 </script>
 </body>

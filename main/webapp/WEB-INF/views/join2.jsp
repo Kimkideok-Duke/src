@@ -20,9 +20,6 @@
 		background-color:rgb(247,247,247);
 		padding-bottom: 400px;
 	}
-	button{
-		border-radius: 5px;
-	}
 	#content_area{
 		width:50%;
 		height:auto;
@@ -53,10 +50,14 @@
 	}
 	#content_area button{
 		background-color:#9ad756;
+		border-radius: 5px;
 		color:white;
 		border: none;
 		cursor:pointer;
 		height:30px;
+	}
+	#content_area button:hover{
+		background-color:#8ec451;
 	}
 	input[type=checkbox]{
         accent-color: #9ad756;
@@ -77,7 +78,11 @@
     	color:gray;
     }
     #alert_input{
+    	text-decoration: none;
+    }
+	#alert_input:hover{
     	text-decoration: underline;
+    	cursor:pointer;
     }
     #pwcheck_info{
     	font-size:15px;
@@ -88,6 +93,50 @@
     	font-size:15px;
     }
 </style>
+<script src="${path}/a00_com/jquery.min.js"></script>
+<script src="${path}/a00_com/popper.min.js"></script>
+<script src="${path}/a00_com/bootstrap.min.js"></script>
+<script src="${path}/a00_com/jquery-ui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#id_check_btn").click(function(){
+			var inputId = $("[name=id]").val();
+			var idPattern = /^(?=.*[a-z])(?=.*\d)[a-z0-9_-]{6,12}$/;
+			if(inputId==""){
+				alert("아이디를 입력해주세요.");
+				$("[name=id]").focus();
+				return;
+			}
+			if(inputId.length < 6 || inputId.length >12 || !inputId.match(idPattern)){
+				alert("아이디는 6~12자 영문+숫자 조합입니다.");
+				$("[name=id]").focus();
+				return;
+			}
+			
+			$.ajax({
+				url:"${path}/checkidAjax.do",
+				data:"id="+inputId,
+				dataType:"json",
+				success:function(data){
+					$("[name=id]").val(data.idvalue);
+					if(data.idcheckresult=="Y"){
+						console.log("3")
+						$("[name=idcheck]").val(data.idcheckresult);
+						$("#idcheck_result").html("사용가능한 아이디입니다.").css("color","blue");
+					}
+					if(data.idcheckresult=="N"){
+						console.log("4")
+						$("[name=idcheck]").val(data.idcheckresult);
+						$("#idcheck_result").html("중복된 아이디입니다.").css("color","red");
+					}
+				}
+			});
+		});
+	});
+
+</script>
 </head>
 
 <body>
@@ -97,10 +146,10 @@
 		<div>
 			<h3><label for="id">아이디<span class="tooltip">영문+숫자 조합으로 6~12자리 입니다.</span></label></h3>
 			<span>
-			<input type="text" id="id" name="id" title="ID" maxlength="12" value="${idvalue}">
+			<input type="text" id="id" name="id" title="ID" maxlength="12" value="">
 			</span>
-			<button type="button" onclick="checkid()"><span>아이디 중복확인</span></button>
-			<input type="hidden" name="idcheck" value="${idcheckresult}"/>
+			<button type="button" id="id_check_btn"><span>아이디 중복확인</span></button>
+			<input type="hidden" name="idcheck" value=""/>
 			<span id="idcheck_result"></span>
 		</div>
 		
@@ -148,16 +197,6 @@
 </form>
 
 <script type="text/javascript">
-	var idcheck_resultObj = document.querySelector("#idcheck_result");
-	var idcheckObj2 = document.querySelector("[name=idcheck]")
-	if(idcheckObj2.value=="Y"){
-		idcheck_resultObj.innerHTML="사용 가능한 아이디입니다.";
-		idcheck_resultObj.style.color="blue";
-	}
-	if(idcheckObj2.value=="N"){
-		idcheck_resultObj.innerHTML="중복되는 아이디입니다.";
-		idcheck_resultObj.style.color="red";	
-	}
 	var joinresult = "${joinresult}";
 	if(joinresult=="Y"){
 		alert("회원가입이 완료되었습니다.\n로그인 페이지로 이동합니다.");
@@ -173,22 +212,6 @@
 			document.querySelector("[name=agree]").value="1";
 		}
 	}
-
-	function checkid(){
-		var idObj = document.querySelector("[name=id]");
-		var idPattern = /^(?=.*[a-z])(?=.*\d)[a-z0-9_-]{6,12}$/;
-		if(idObj.value==""){
-			alert("아이디를 입력해주세요.");
-			idObj.focus();
-			return;
-		}
-		if(idObj.value.length < 6 || idObj.value.length >12 || !idObj.value.match(idPattern)){
-			alert("아이디는 6~12자 영문+숫자 조합입니다.");
-			idObj.focus();
-			return;
-		}
-		location.href="${path}/checkid.do?id="+idObj.value
-	}
 	function join(){
 		var idObj = document.querySelector("[name=id]");
 		var pswd1Obj = document.querySelector("[name=pw]");
@@ -197,7 +220,7 @@
 		var emailObj = document.querySelector("[name=email]");
 		var pass_numObj = document.querySelector("[name=pass_num]");
 		var pwcheckObj = document.querySelector("#pwcheck_var");
-		var idcheckObj = "${idcheckresult}";
+		var idcheckObj = $("[name=idcheck]").val();
 		var emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 		var pwPattern = /^(?=.*[a-z])(?=.*\d)[a-z0-9_-]{8,16}$/;
 		if(idObj.value==""){
