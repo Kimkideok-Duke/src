@@ -36,7 +36,7 @@
 	input[type=checkbox]{
         accent-color: #9ad756;
     }
-    button{
+    #content_area button{
     	background-color:#9ad756;
     	border-radius:5px;
 		color:white;
@@ -48,6 +48,9 @@
 		font-size:17px;
 		margin-top:20px;
     }
+	#content_area button:hover{
+		background-color:#8ec451;
+	}
 </style>
 </head>
 
@@ -71,7 +74,7 @@
 		  const checkbox = document.getElementById('check_agree');
 		  const is_checked = checkbox.checked;
 		  if(is_checked){
-			  location.href="${path}/join2.do";
+			  location.href="${path}/join2Ajax.do";
 		  }else{
 			  alert("서비스 이용약관 동의가 필요합니다.");
 		  }

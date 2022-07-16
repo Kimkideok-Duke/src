@@ -19,9 +19,6 @@
 	body{
 		background-color:rgb(247,247,247);
 	}
-	button{
-		border-radius: 5px;
-	}
 	#content_area{
 		width:30%;
 		height:auto;
@@ -52,6 +49,7 @@
 	}
 	#content_area button{
 		background-color:#9ad756;
+		border-radius: 5px;
 		color:white;
 		border: none;
 		cursor:pointer;
@@ -59,6 +57,9 @@
 		width:100%;
 		font-weight:bold;
 		font-size:17px;
+	}
+	#content_area button:hover{
+		background-color:#8ec451;
 	}
 	input[type=checkbox]{
         accent-color: #9ad756;
@@ -145,9 +146,8 @@ function isEmpty(arg){
 <script type="text/javascript">
 var dist = "${dist}";
 if(dist=="Y"){
-	//sessionStorage.setItem("userId", "${loginId}");
 	alert("${loginId}님 로그인");
-	location.href="${path}/mypage.do";
+	location.href="${path}/mypage2.do";
 }
 if(dist=="N"){
 	alert("아아디/비밀번호가 다릅니다.");
