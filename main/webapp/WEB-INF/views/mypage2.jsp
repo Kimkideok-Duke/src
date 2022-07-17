@@ -217,6 +217,8 @@ $(document).ready(function(){
 				</tbody>
 			</table>
 		</div>
+		<button type="button" id="logout_btn">로그아웃</button>
+		<button type="button" id="withdraw_btn">회원탈퇴</button>
 	</div>
 
 <script type="text/javascript">
