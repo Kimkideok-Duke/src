@@ -130,5 +130,36 @@ public class AccountController {
 	public String goChangePwPage() {
 		return "WEB-INF\\views\\change_pw.jsp";
 	}
-	
+	// 로그아웃
+	@RequestMapping("logout.do")
+	public String logout(HttpSession session, Model d) {
+		session.invalidate();
+		d.addAttribute("logout", "Y");
+		return "mypage2.do";
+	}
+	// 회원탈퇴
+	@RequestMapping("withdraw.do")
+	public String withdraw(HttpSession session, @RequestParam("userno") String userno, Model d) {
+		int usernoInt = Integer.parseInt(userno);
+		service.deleteAccount(usernoInt);
+		session.invalidate();
+		d.addAttribute("proc4", "W");
+		return "mypage2.do";
+	}
+	// 마이페이지 내가 생성한 프로젝트
+	// http://localhost:7080/Team5/createPjList.do
+	@RequestMapping("createPjList.do")
+	public String createPjList(HttpSession session, Model d) {
+		int userno = (int)session.getAttribute("userNo");
+		d.addAttribute("createList", service.mypagePlist_create(userno));
+		return "pageJsonReport";
+	}
+	// 마이페이지 내가 참여한 프로젝트
+	// http://localhost:7080/Team5/joinPjList.do
+	@RequestMapping("joinPjList.do")
+	public String joinPjList(HttpSession session, Model d) {
+		int userno = (int)session.getAttribute("userNo");
+		d.addAttribute("joinList", service.mypagePlist_join(userno));
+		return "pageJsonReport";
+	}
 }

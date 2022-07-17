@@ -25,4 +25,33 @@
 		SET pw= #{pw}
 		WHERE id= #{id}
 	</update>
+	<delete id="deleteAccount" parameterType="int">
+		DELETE
+		FROM account
+		WHERE userno=#{userno}
+	</delete>
+	<select id="mypagePlist_create" resultType="mplist" parameterType="int">
+		SELECT p.pno, count(m.userno) countuser, p.title
+		FROM project p, MEMBER m
+		WHERE p.pno IN (
+			SELECT pno
+			FROM MEMBER
+			WHERE auth = 'host'
+			AND userno = #{userno})
+		AND p.pno = m.pno
+		GROUP BY p.pno, p.title
+		ORDER BY pno
+	</select>
+	<select id="mypagePlist_join" resultType="mplist" parameterType="int">
+		SELECT p.pno, count(m.userno) countuser, p.title
+		FROM project p, MEMBER m
+		WHERE p.pno IN (
+			SELECT pno
+			FROM MEMBER
+			WHERE auth = 'member'
+			AND userno = #{userno})
+		AND p.pno = m.pno
+		GROUP BY p.pno, p.title
+		ORDER BY pno
+	</select>
 </mapper>

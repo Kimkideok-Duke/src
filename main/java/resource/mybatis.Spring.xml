@@ -8,6 +8,7 @@
 		<typeAlias alias="member" type="team5.vo.Member"/>
 		<typeAlias alias="account" type="team5.vo.Account"/>
 		<typeAlias alias="notice" type="team5.vo.Notice"/>
+		<typeAlias alias="mplist" type="team5.vo.MypageList"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="resource/team5Mapper.xml"/>

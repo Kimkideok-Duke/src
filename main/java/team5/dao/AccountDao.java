@@ -1,8 +1,11 @@
 package team5.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import team5.vo.Account;
+import team5.vo.MypageList;
 
 
 // team5.dao.AccountDao
@@ -23,4 +26,13 @@ public interface AccountDao {
 	
 	// 비밀번호 변경
 	public void updatePw(Account upt);
+	
+	// 회원탈퇴
+	public void deleteAccount(int userno);
+	
+	// 마이페이지 내가 생성한 프로젝트 목록
+	public List<MypageList> mypagePlist_create(int userno);
+	
+	// 마이페이지 내가 참여한 프로젝트 목록
+	public List<MypageList> mypagePlist_join(int userno);
 }
