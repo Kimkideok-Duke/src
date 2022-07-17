@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="team5.dao.MainDao">
+	<select id="getScheduleList" resultType="schedule" parameterType="int">
+		SELECT *
+		FROM schedule
+		WHERE 1=1
+		and pno = #{pno}
+	</select>
+	<select id="getScheduleDetail" resultType="schedule" parameterType="int">
+		SELECT *
+		FROM schedule
+		WHERE 1=1
+		and itemno = #{itemno}
+	</select>
+	<insert id="insertSchedule" parameterType="schedule">
+		INSERT INTO schedule
+		values(itemno_seq.nextval, #{pno}, #{item,jdbcType=VARCHAR},
+		#{progress,jdbcType=VARCHAR}, #{deadline,jdbcType=DATE},
+		#{comm,jdbcType=VARCHAR}, #{perm,jdbcType=VARCHAR})
+	</insert>
+	
+	<select id="getUserNoList" resultType="int" parameterType="int">
+		SELECT userno
+		FROM participate
+		WHERE 1=1
+		and itemno = #{itemno}
+	</select>
+	<update id="updateSchedule" parameterType="schedule">
+	UPDATE schedule
+		SET item = #{item,jdbcType=VARCHAR},
+			progress = #{progress,jdbcType=VARCHAR},
+			deadline = #{deadline,jdbcType=VARCHAR},
+			comm = #{comm,jdbcType=VARCHAR}
+		WHERE itemno = #{itemno}
+	</update>
+	<delete id="deleteSchedule" parameterType="int">
+		DELETE
+		FROM schedule
+		WHERE itemno = #{itemno}
+	</delete>
+</mapper>
