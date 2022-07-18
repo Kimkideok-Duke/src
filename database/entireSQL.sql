@@ -16,10 +16,20 @@ CREATE TABLE schedule(
 	progress varchar2(10) CONSTRAINTS schedule_progress_ck
 		CHECK (progress IN ('기본','진행중','막힘','완료')),
 	deadline DATE,
-	comment varchar2(100),
-	perm varchar2(50)
+	comm varchar2(100),
+	auth varchar2(10) CONSTRAINTS schedule_auth_ck
+		CHECK (auth IN ('CREATOR','NORMAL'))
 );
-SELECT * FROM SCHEDULE ;
+CREATE SEQUENCE itemno_seq
+	START WITH 1
+	MINVALUE 1
+	MAXVALUE 999999
+	INCREMENT BY 1;
+DROP SEQUENCE itemno_seq;
+DROP TABLE schedule;
+INSERT INTO SCHEDULE values(itemno_seq.nextval, 2, '플로우차트', '기본', '2022-07-28', '코멘트1', 'NORMAL');
+SELECT * FROM SCHEDULE s ;
+SELECT itemno, pno, item, progress, to_char(deadline,'YYYYMMDD'),comm, auth FROM SCHEDULE ;
 
 --회원
 CREATE TABLE account(
@@ -61,6 +71,9 @@ CREATE TABLE log(
 	logDate DATE,
 	category varchar2(50)
 );
+DROP TABLE log;
+SELECT * FROM log;
+INSERT INTO log values(1,2,2,10001,sysdate,1);
 
 SELECT * FROM MEMBER;
 
@@ -73,6 +86,7 @@ CREATE TABLE participate(
 	itemno NUMBER REFERENCES schedule(itemno),
 	userno NUMBER REFERENCES account(userno)
 );
+DROP TABLE PARTICIPATE ;
 SELECT s.item, a.name FROM participate p, account a, schedule s WHERE p.itemno = s.itemno AND p.userno = a.userno AND p.itemno = 3;
 INSERT INTO PARTICIPATE values(3,10001);
 INSERT INTO PARTICIPATE values(3,10020);
