@@ -22,16 +22,16 @@ CREATE TABLE schedule(
 SELECT * FROM SCHEDULE ;
 
 --회원
-CREATE TABLE userTable(
+CREATE TABLE account(
 	userno NUMBER PRIMARY KEY,
-	email varchar2(50),
-	id varchar2(12),
-	pw varchar2(16),
-	name varchar2(50),
-	joindate DATE,
-	agree char(1) CONSTRAINTS userTable_agree_ck
-		CHECK (agree IN ('Y','N'))
+	email varchar2(50) NOT NULL UNIQUE,
+	id varchar(12) NOT NULL UNIQUE,
+	pw varchar(16) NOT NULL,
+	name varchar2(50) NOT NULL,
+	joindate DATE NOT NULL,
+	agree number(1) NOT NULL CHECK (agree IN (0,1))
 );
+
 CREATE SEQUENCE usertable_seq
 	START WITH 1
 	MINVALUE 1
@@ -41,9 +41,10 @@ CREATE SEQUENCE usertable_seq
 SELECT * FROM USERTable;
 INSERT INTO userTable values(usertable_seq.nextval,'asd123@naver.com','asd123','aa1111','홍길동',sysdate,'Y');
 
+
 --팀원
 CREATE TABLE member(
-	userno NUMBER REFERENCES user(userno),
+	userno NUMBER REFERENCES account(userno),
 	pno NUMBER REFERENCES project(pno),
 	perm varchar2(10) CONSTRAINTS member_perm_ck
 		CHECK (perm IN ('HOST','MANAGER'))
@@ -54,7 +55,7 @@ CREATE TABLE log(
 	logno NUMBER PRIMARY KEY,
 	itemno NUMBER REFERENCES schedule(itemno),
 	pno NUMBER REFERENCES project(pno),
-	userno NUMBER REFERENCES user(userno),
+	userno NUMBER REFERENCES account(userno),
 	logDate DATE,
 	category varchar2(50)
 );
@@ -62,7 +63,7 @@ CREATE TABLE log(
 --참여인원
 CREATE TABLE participate(
 	itemno NUMBER REFERENCES schedule(itemno),
-	userno NUMBER REFERENCES user(userno)
+	userno NUMBER REFERENCES account(userno)
 );
 
 --공지사항
