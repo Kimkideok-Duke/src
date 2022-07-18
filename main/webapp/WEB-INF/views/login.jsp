@@ -152,6 +152,9 @@ if(dist=="Y"){
 if(dist=="N"){
 	alert("아아디/비밀번호가 다릅니다.");
 }
+if(dist=="Nid"){
+	alert("존재하지 않는 아이디입니다.");
+}
 var cookie_id = getCookie('saveId');
 if(!isEmpty(cookie_id)){
 	var id = document.querySelector("[name=id]");

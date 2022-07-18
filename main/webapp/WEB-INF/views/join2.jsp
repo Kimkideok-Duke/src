@@ -51,6 +51,7 @@
 	#content_area button{
 		background-color:#9ad756;
 		border-radius: 5px;
+		width:110px;
 		color:white;
 		border: none;
 		cursor:pointer;
@@ -72,6 +73,7 @@
 		font-weight:bold;
 		font-size:17px;
 		color:white;
+		margin-top:20px;
     } 
     .tooltip{
     	font-size: 12px;
@@ -89,6 +91,10 @@
     	display:block;
     }
     #idcheck_result{
+    	display:block;
+    	font-size:15px;
+    }
+    #corNum_result{
     	display:block;
     	font-size:15px;
     }
@@ -124,13 +130,31 @@
 					if(data.idcheckresult=="Y"){
 						console.log("3")
 						$("[name=idcheck]").val(data.idcheckresult);
-						$("#idcheck_result").html("사용가능한 아이디입니다.").css("color","blue");
+						$("#idcheck_result").html("사용가능한 아이디입니다.").css("color","green");
 					}
 					if(data.idcheckresult=="N"){
 						console.log("4")
 						$("[name=idcheck]").val(data.idcheckresult);
 						$("#idcheck_result").html("중복된 아이디입니다.").css("color","red");
 					}
+				}
+			});
+		});
+		$("#send_btn").click(function(){
+			var emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+			var inputEmail = $("[name=email]").val();
+			if(!inputEmail.match(emailPattern)){
+				alert("이메일 형식이 올바르지 않습니다.")
+				$("[name=email]").focus();
+				return
+			}
+			$.ajax({
+				url:"${path}/sendCorNum.do",
+				data:"inputEmail="+inputEmail,
+				dataType:"json",
+				success:function(data){
+					$("#cornum1").val(data.corNum);
+					alert("인증번호가 전송되었습니다.\n메일 확인 후 인증번호를 입력해주세요");
 				}
 			});
 		});
@@ -178,14 +202,18 @@
 			<span>
 			<input type="text" id="email" name="email" title="EMAIL" maxlength="30">
 			</span>
-			<button type="button" onclick=""><span>인증번호 발송</span></button>
+			<button id="send_btn" type="button" onclick=""><span>인증번호 발송</span></button>
+			<input type="hidden" id="cornum1" value=""/>
 		</div>
 		
 		<div>
 			<h3><label for="pass_num">인증번호</label></h3>
 			<span>
-			<input type="text" id="pass_num" name="pass_num" title="PASS_NUM" maxlength="6" placeholder="인증번호 입력">
+			<input type="text" id="pass_num" name="pass_num" title="PASS_NUM" maxlength="6" placeholder="인증번호 6자리 입력">
 			</span>
+			<button type="button" onclick="corNumcheck()"><span>인증</span></button>
+			<span id="corNum_result"></span>
+			<input type="hidden" id="cor_result" value=""/>
 		</div>
 		<div id="join_btn">
 		 <button type="button" onclick="join()"><span>가입하기</span></button>
@@ -220,6 +248,7 @@
 		var emailObj = document.querySelector("[name=email]");
 		var pass_numObj = document.querySelector("[name=pass_num]");
 		var pwcheckObj = document.querySelector("#pwcheck_var");
+		var corNumcheckObj = document.querySelector("#cor_result");
 		var idcheckObj = $("[name=idcheck]").val();
 		var emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 		var pwPattern = /^(?=.*[a-z])(?=.*\d)[a-z0-9_-]{8,16}$/;
@@ -262,6 +291,11 @@
 			emailObj.focus();
 			return
 		}
+		if(corNumcheckObj.value==""){
+			alert("이메일인증이 완료되지 않았습니다.\n이메일인증을 해주세요.");
+			emailObj.focus();
+			return			
+		}
 		document.querySelector("form").submit();
 	}
 	function pwcheck() {
@@ -270,12 +304,27 @@
 	    if(pw1 != '' && pw2 !='') {
 			if(pw1 == pw2) {
 				    document.querySelector("#pwcheck_info").innerHTML="비밀번호가 일치합니다.";
-				    document.querySelector("#pwcheck_info").style.color="blue";
+				    document.querySelector("#pwcheck_info").style.color="green";
 					document.querySelector("#pwcheck_var").value="Y";
 			} else {
 			        document.querySelector("#pwcheck_info").innerHTML="비밀번호가 일치하지 않습니다.";
 			        document.querySelector("#pwcheck_info").style.color="red";
 					document.querySelector("#pwcheck_var").value="";
+			}
+		}
+	}
+	function corNumcheck() {
+		var corNum1 = document.querySelector("#cornum1").value;
+		var corNum2 = document.querySelector("[name=pass_num]").value;
+		if(corNum1 != '' && corNum2 !='') {
+			if(corNum1 == corNum2) {
+				document.querySelector("#corNum_result").innerHTML="인증되었습니다.";
+				document.querySelector("#corNum_result").style.color="green";
+				document.querySelector("#cor_result").value="Y";
+			} else {
+				document.querySelector("#corNum_result").innerHTML="인증번호가 일치하지 않습니다.";
+				document.querySelector("#corNum_result").style.color="red";
+				document.querySelector("#cor_result").value="";
 			}
 		}
 	}
