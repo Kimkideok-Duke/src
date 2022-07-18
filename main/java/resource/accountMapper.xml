@@ -36,7 +36,7 @@
 		WHERE p.pno IN (
 			SELECT pno
 			FROM MEMBER
-			WHERE auth = 'host'
+			WHERE auth = 'HOST'
 			AND userno = #{userno})
 		AND p.pno = m.pno
 		GROUP BY p.pno, p.title
@@ -48,7 +48,7 @@
 		WHERE p.pno IN (
 			SELECT pno
 			FROM MEMBER
-			WHERE auth = 'member'
+			WHERE auth = 'MANAGER'
 			AND userno = #{userno})
 		AND p.pno = m.pno
 		GROUP BY p.pno, p.title
