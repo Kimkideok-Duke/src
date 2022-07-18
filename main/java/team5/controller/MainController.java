@@ -14,8 +14,8 @@ public class MainController {
 	@Autowired(required=false)
 	private MainService service;
 	
-	// http://localhost:7080/team5/Main.do
-	// http://220.73.54.156:8080/team5/Main.do
+	// http://localhost:7080/Team5/Main.do
+	// http://220.73.54.156:8080/Team5/Main.do
 	
 	@RequestMapping("Main.do")
 	public String Main(@RequestParam(value = "pno", defaultValue = "2") int pno, Model d){
