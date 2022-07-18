@@ -10,9 +10,11 @@ import team5.vo.Notice;
 @Repository
 public interface NoticeDao {
 	// 공지사항 리스트/검색
-	public List<Notice> noticeList(Notice sch);
+	public List<Notice> noticeList(String title);
 	// 공지사항 등록
 	public void noticeInsert(Notice ins);
+//	// 공지사항 검색
+//	public List<Notice> noticeSearch(String title);
 	// 공지사항 상세
 	public Notice noticeDetail(int noticeno);
 	// 공지사항 조회수

@@ -14,8 +14,8 @@ public class NoticeService {
 	private NoticeDao dao;
 	
 	// 공지사항 리스트/검색
-	public List<Notice> noticeList(Notice sch){
-		return dao.noticeList(sch);
+	public List<Notice> noticeList(String title){
+		return dao.noticeList(title);
 	}
 	// 공지사항 등록
 	public void noticeInsert(Notice ins) {
@@ -23,15 +23,13 @@ public class NoticeService {
 	}
 	// 공지사항 상세
 	public Notice noticeDetail(int noticeno) {
+		dao.readCountup(noticeno);
 		return dao.noticeDetail(noticeno);
 	}
-	// 공지사항 조회수
-	public void readCountup(int noticeno) {
-		dao.readCountup(noticeno);
-	}
 	// 공지사항 수정
-	public void noticeUpdate(Notice upt) {
+	public Notice noticeUpdate(Notice upt) {
 		dao.noticeUpdate(upt);
+		return dao.noticeDetail(upt.getNoticeno());
 	}
 	// 공지사항 삭제
 	public void noticeDelete(int noticeno) {

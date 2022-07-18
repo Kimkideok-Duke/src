@@ -55,42 +55,32 @@ table.type09 td {
 }
 tr:hover{
   background: #f3f6f7;
-}/*
+}
 button{
   float: right;
-}*/
+}
 </style>
 
 </head>
 <script>
-	function goDetail(noticeno){
-		location.href="${path}/noticeDetail.do?noticeno="+noticeno;
-	}
-	function goWrite(){
-		location.href="${path}/noticeGoWrite.do";
-	}
-	$(#schBtn).css("{height:10px, width:10px}")
 </script>
 <%=session.getAttribute("userId")%>
 <%=session.getAttribute("pno")%>
+
 <body>
 <div><h2>공지사항</h2></div>
-	<form action="${path}/noticeList.do">
-		<input name="title" placeholder="제목" value="${notice.title}">
-		<button type="submit" value="검색" class="schBtn"></button>
-	</form>
+	<form>
 		<div id="head">
 			<table class="type09">
 			<thead>
-			<tr><th>No.</th><th>제목</th><th>작성자</th><th>작성일자</th><th>조회수</th></tr>
+			<tr><th>알림 내용</th></tr>
 			</thead>
 			<tbody>
-			<c:forEach var="nl" items="${nolist}">
-			<tr ondblclick="goDetail(${nl.noticeno})"><td>${nl.noticeno}</td><td>${nl.title}</td><td>호스트</td><td><fmt:formatDate value="${nl.creatdate}"/></td><td>${nl.views}</td></tr>
-			</c:forEach>
+			<tr><td>${}</td></tr>
 			</tbody>
 			</table>
-			<input type="button" value="글등록" onclick="goWrite()" style="float: right">
+			<input type="button" value="알림 삭제" onclick="" style="float: right">
 		</div>
+	</form>
 </body>
 </html>

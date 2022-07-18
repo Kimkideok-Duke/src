@@ -4,12 +4,10 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team5.dao.NoticeDao">
 	<!-- 공지사항 리스트/검색 -->
-	<select id="noticeList" resultType="notice" parameterType="notice">
+	<select id="noticeList" resultType="notice" parameterType="string">
 		SELECT *
-		FROM BOARD WHERE 1=1
-		<if test="title!=null">
-			AND title LIKE '%'||#{title}||'%'
-		</if>
+		FROM notice WHERE 1=1
+		AND title LIKE '%'||#{title}||'%'
 		ORDER BY creatdate DESC 
 	</select>
 	
@@ -22,7 +20,7 @@
 	
 	<!-- 공지사항 등록 -->
 	<insert id="noticeInsert" parameterType="notice">
-		INSERT INTO notice VALUES(notice_seq.nextval,#{pno},#{title},#{content},sysdate,0);
+		INSERT INTO notice VALUES(notice_seq.nextval,#{pno},#{title},#{content},sysdate,0)
 	</insert>
 	
 	<!-- 공지사항 수정 -->

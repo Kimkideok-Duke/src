@@ -18,7 +18,12 @@
 <link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css" >
 <link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
 <style>
-   td{text-align:center;}
+table, th, td { border: 1px solid black; border-collapse: collapse }
+table{
+	width:70%;
+	height: 200px;
+	margin:auto;
+}
 </style>
 <script src="${path}/a00_com/jquery.min.js"></script>
 <script src="${path}/a00_com/popper.min.js"></script>
@@ -34,71 +39,39 @@
    });
 </script>
 </head>
+<script type="text/javascript">
+	function goupt(noticeno){
+		if(confirm("수정화면으로 이동하시겠습니까?")){
+			location.href="${path}/noticeGoUpdate.do?noticeno="+noticeno;
+			}
+		}
+	function godel(noticeno){
+		if(confirm("삭제하시겠습니까?")){
+			location.href="${path}/noticeDelete.do?noticeno="+noticeno;
+		}
+	}
+	function gomain(){
+		location.href="${path}/noticeList.do"
+	}
+	
+	var proc = "${proc}"
+	if(proc=="del"){
+		alert("삭제성공\n조회 리스트화면으로 이동!")
+		location.href="${path}/noticeList.do";
+	}	
 
+</script>
+<%=session.getAttribute("userId")%>
+<%=session.getAttribute("pno")%>
 <body>
-<div class="jumbotron text-center">
-  <h2 data-toggle="modal" data-target="#exampleModalCenter">타이틀</h2>
+<h2>공지사항</h2>
+		<table>
+			<tr><td>${notice.noticeno}</td><td>${notice.title}</td><td>${notice.creatdate}</td></tr>
+			<tr><td colspan='3'>${notice.content}</td></tr>
+		</table>
 
-</div>
-<div class="container">
-   <form id="frm01" class="form-inline"  method="post">
-     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-       <input class="form-control mr-sm-2" placeholder="제목" />
-       <input class="form-control mr-sm-2" placeholder="내용" />
-       <button class="btn btn-info" type="submit">Search</button>
-    </nav>
-   </form>
-   <table class="table table-hover table-striped">
-      <col width="10%">
-      <col width="50%">
-      <col width="15%">
-      <col width="15%">
-      <col width="10%">
-    <thead>
-    
-      <tr class="table-success text-center">
-        <th>번호</th>
-        <th>제목</th>
-        <th>작성자</th>
-        <th>작성일</th>
-        <th>조회</th>
-      </tr>
-    </thead>   
-    <tbody>
-       <tr><td></td><td></td><td></td><td></td><td></td></tr>
-       <tr><td></td><td></td><td></td><td></td><td></td></tr>
-       <tr><td></td><td></td><td></td><td></td><td></td></tr>
-    </tbody>
-   </table>    
-    
-</div>
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">타이틀</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <form id="frm02" class="form"  method="post">
-        <div class="row">
-         <div class="col">
-           <input type="text" class="form-control" placeholder="사원명 입력" name="ename">
-         </div>
-         <div class="col">
-           <input type="text" class="form-control" placeholder="직책명 입력" name="job">
-         </div>
-        </div>
-       </form> 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+<input type="button" value="수정" onclick="goupt(${notice.noticeno})">
+<input type="button" value="삭제" onclick="godel(${notice.noticeno})">
+<input type="button" value="리스트" onclick="gomain()">
 </body>
 </html>
