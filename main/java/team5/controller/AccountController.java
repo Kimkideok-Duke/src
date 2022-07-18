@@ -162,4 +162,13 @@ public class AccountController {
 		d.addAttribute("joinList", service.mypagePlist_join(userno));
 		return "pageJsonReport";
 	}
+	// 인증번호 발송
+	// http://localhost:7080/board/sendCorNum.do
+	@RequestMapping("sendCorNum.do")
+	public String sendCorNum(@RequestParam("inputEmail") String inputEmail, Model d) {
+		int corNum = (int)(Math.random()*900000+100000);
+		service.sendMail(corNum, inputEmail);
+		d.addAttribute("corNum", corNum);
+		return "pageJsonReport";
+	}
 }

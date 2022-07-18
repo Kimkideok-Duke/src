@@ -100,79 +100,78 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-	var logout = "${logout}";
-	if(logout=="Y"){
-		alert("페이지에서 로그아웃되었습니다.");
-		location.href="${path}/login.do";
-	}
-	$.ajax({
-		url:"${path}/mypageAjax.do",
-		dataType:"json",
-		success:function(data){
-			var user = data.user;
-			$("#user_id").text(user.id);
-			$("#user_name").text(user.name);
-			$("#user_email").text(user.email);
-		}
-	});
-	$.ajax({
-		url:"${path}/createPjList.do",
-		dataType:"json",
-		success:function(data){
-			var clist = data.createList;
-			var addHtml1 = "";
-			$(clist).each(function(idx, c){
-				addHtml1 += "<tr onclick='goDetail("+c.pno+")'><td>"+(idx+1)+"</td><td>"+c.title+"</td><td>"+c.countuser+"</td></tr>";
-			});
-			$("#project_create").html(addHtml1);
-		}
-	});
-	$.ajax({
-		url:"${path}/joinPjList.do",
-		dataType:"json",
-		success:function(data){
-			var jlist = data.joinList;
-			var addHtml2 = "";
-			$(jlist).each(function(idx, j){
-				addHtml2 += "<tr onclick='goDetail("+j.pno+")'><td>"+(idx+1)+"</td><td>"+j.title+"</td><td>"+j.countuser+"</td></tr>";
-			});
-			console.log(addHtml2)
-			$("#project_join").html(addHtml2);
-		}
-	});
-	$("#pwChange_btn").click(function(){
-		var pw = $("[name=pw]").val();
-		if(pw==""){
-			alert("비밀번호를 입력해야합니다.");
-			$("[name=pw]").focus();
-			return;
+	$(document).ready(function(){
+		var logout = "${logout}";
+		if(logout=="Y"){
+			alert("페이지에서 로그아웃되었습니다.");
+			location.href="${path}/login.do";
 		}
 		$.ajax({
-			url:"${path}/goChangePwAjax.do",
-			data:"pw="+pw,
+			url:"${path}/mypageAjax.do",
 			dataType:"json",
 			success:function(data){
-				if(!data.valid){
-					alert("비밀번호가 일치하지 않습니다.");
-					$("[name=pw]").focus();
-				}else{
-					location.href="${path}/goChangePwPage.do"
+				var user = data.user;
+				$("#user_id").text(user.id);
+				$("#user_name").text(user.name);
+				$("#user_email").text(user.email);
+			}
+		});
+		$.ajax({
+			url:"${path}/createPjList.do",
+			dataType:"json",
+			success:function(data){
+				var clist = data.createList;
+				var addHtml1 = "";
+				$(clist).each(function(idx, c){
+					addHtml1 += "<tr onclick='goDetail("+c.pno+")'><td>"+(idx+1)+"</td><td>"+c.title+"</td><td>"+c.countuser+"</td></tr>";
+				});
+				$("#project_create").html(addHtml1);
+			}
+		});
+		$.ajax({
+			url:"${path}/joinPjList.do",
+			dataType:"json",
+			success:function(data){
+				var jlist = data.joinList;
+				var addHtml2 = "";
+				$(jlist).each(function(idx, j){
+					addHtml2 += "<tr onclick='goDetail("+j.pno+")'><td>"+(idx+1)+"</td><td>"+j.title+"</td><td>"+j.countuser+"</td></tr>";
+				});
+				$("#project_join").html(addHtml2);
+			}
+		});
+		$("#pwChange_btn").click(function(){
+			var pw = $("[name=pw]").val();
+			if(pw==""){
+				alert("비밀번호를 입력해야합니다.");
+				$("[name=pw]").focus();
+				return;
+			}
+			$.ajax({
+				url:"${path}/goChangePwAjax.do",
+				data:"pw="+pw,
+				dataType:"json",
+				success:function(data){
+					if(!data.valid){
+						alert("비밀번호가 일치하지 않습니다.");
+						$("[name=pw]").focus();
+					}else{
+						location.href="${path}/goChangePwPage.do"
+					}
 				}
+			});
+		});
+		$("#logout_btn").click(function(){
+			if(confirm("로그아웃 하시겠습니까?")){
+				location.href="${path}/logout.do";
+			}
+		});
+		$("#withdraw_btn").click(function(){
+			if(confirm("회원탈퇴 하시겠습니까?")){
+				location.href="${path}/withdraw.do?userno="+<%=session.getAttribute("userNo")%>;
 			}
 		});
 	});
-	$("#logout_btn").click(function(){
-		if(confirm("로그아웃 하시겠습니까?")){
-			location.href="${path}/logout.do";
-		}
-	});
-	$("#withdraw_btn").click(function(){
-		if(confirm("회원탈퇴 하시겠습니까?")){
-			location.href="${path}/withdraw.do?userno="+<%=session.getAttribute("userNo")%>;
-		}
-	});
-});
 
 </script>
 </head>
@@ -222,11 +221,7 @@ $(document).ready(function(){
 	</div>
 
 <script type="text/javascript">
-console.log("<%=session.getAttribute("userId")%>");
-console.log("<%=session.getAttribute("userNo")%>");
 var loginCheck = "<%=session.getAttribute("userId")%>";
-console.log(loginCheck);
-console.log("<%=session.getAttribute("userNo")%>");
 if(loginCheck=="null" || loginCheck=="" || loginCheck==null || loginCheck == undefined || 
 		( loginCheck != null && typeof loginCheck == "object" && !loginCheck.keys(loginCheck).length )){
 	alert("로그인 정보가 없습니다.\n로그인페이지로 이동합니다.");
@@ -239,7 +234,7 @@ if(proc4=="W"){
 }
 /*
 function goDetail(pno){
-	location.href="?pno="+pno-;
+	location.href="Main.do?pno="+pno;
 }
 */
 </script>
