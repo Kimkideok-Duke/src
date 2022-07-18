@@ -43,10 +43,10 @@ public class ProjectController {
 	@RequestMapping("joinProject.do")
 	public String joinProject(HttpSession session, String code, Model d) {
 		int pno = service.joinProject(code);
-		d.addAttribute("pno", pno);
+		d.addAttribute("pno", pno); 
 		session.setAttribute("pno", pno);
 		d.addAttribute("isJoin","Y");
-		service.insertMember(new Member((int)session.getAttribute("userNo"),(int)session.getAttribute("pno"),"member"));
+		service.insertMember(new Member((int)session.getAttribute("userNo"),(int)session.getAttribute("pno"),"MANAGER"));
 		return "WEB-INF/views/joinProject.jsp";
 	}
 	
@@ -75,7 +75,7 @@ public class ProjectController {
 		d.addAttribute("pno", pno);
 		session.setAttribute("pno", pno);
 		d.addAttribute("isCreate","Y");
-		service.insertMemberHost(new Member((int)session.getAttribute("userNo"),(int)session.getAttribute("pno"),"host"));
+		service.insertMemberHost(new Member((int)session.getAttribute("userNo"),(int)session.getAttribute("pno"),"HOST"));
 		return "WEB-INF/views/createProject.jsp";
 	}
 }

@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Join Project</title>
+<title>Manage Member</title>
 <link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css" >
 <link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
 <style>
@@ -32,32 +32,40 @@
       
       --%>   
    });
-   
-   function joinProject(){             // 프로젝트 참여 함수
-	   var code = $("[name=code]").val();
-      location.href="${path}/joinProject.do?code="+code;
-	}
-   	
-   function createProject(){           // 프로젝트 생성 함수
-      location.href="${path}/createProjectPage.do";
-	}
 </script>
 </head>
 
 <body>
 <div class="jumbotron text-center">
-  <h2>새 프로젝트 생성/선택</h2>
+  <h2 data-toggle="modal" data-target="#exampleModalCenter">팀원 관리</h2>
+
 </div>
 <div class="container">
-    <input type="text" name="code" placeholder="Enter CODE">
-    <input type="button" onclick="joinProject()" value="JOIN"><br>
-    <input type="button" onclick="createProject()" value="새프로젝트 생성">
+   <table class="memberTable">
+   	<%int i=0; %>
+  	  <tr>
+  	  	<col width="30%"><col width="30%"><col width="30%"><col width="10%">
+     	<th>No.</th><th>팀원명</th><th>권한</th><th></th></tr>
+  	   <c:forEach var="m" items="${mlist}">
+      	   <tr><td><%=++i %></td><td>${m.name}</td><td>${m.auth}</td>
+      	   <%if(i!=1){ %>
+      	   	<td><input type="button" onclick="deleteProc(${m.userno}, ${m.pno}, '${m.name}')" value="삭제"></td>
+      	   <%} %>
+      	   </tr>
+      </c:forEach>
+   </table>    
+    
 </div>
 <script>
-var isJoin = "${isJoin}"
-if(isJoin=="Y"){
-   var pno = "${pno}"
-   location.href="${path}/Project1.do"    // 임시로 Project1
+var del = "${del}"
+function deleteProc(userno, pno, name){
+   if(confirm(name+" 삭제하시겠습니까?")){
+      location.href="${path}/deleteMember.do?userno="+userno+"&pno="+pno;
+   }
+}
+if(del=="Y"){
+   alert("삭제성공")
+   location.href="${path}/getMemberList.do";
 }
 </script>
 </body>

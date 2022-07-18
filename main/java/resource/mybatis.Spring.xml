@@ -6,6 +6,7 @@
 		<typeAlias alias="project" type="team5.vo.Project"/>
 		<typeAlias alias="projectmemberjoin" type="team5.vo.ProjectMemberJoin"/>
 		<typeAlias alias="member" type="team5.vo.Member"/>
+		<typeAlias alias="memberaccountjoin" type="team5.vo.MemberAccountJoin"/>
 		<typeAlias alias="account" type="team5.vo.Account"/>
 		<typeAlias alias="notice" type="team5.vo.Notice"/>
 		<typeAlias alias="mplist" type="team5.vo.MypageList"/>
@@ -16,6 +17,7 @@
 		<mapper resource="resource/team5Mapper.xml"/>
 		<mapper resource="resource/accountMapper.xml"/>
 		<mapper resource="resource/projectMapper.xml"/>
+		<mapper resource="resource/memberMapper.xml"/>
 		<mapper resource="resource/noticeMapper.xml"/>
 		<mapper resource="resource/mainMapper.xml"/>
 	</mappers>
