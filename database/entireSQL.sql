@@ -46,9 +46,11 @@ INSERT INTO userTable values(usertable_seq.nextval,'asd123@naver.com','asd123','
 CREATE TABLE member(
 	userno NUMBER REFERENCES account(userno),
 	pno NUMBER REFERENCES project(pno),
-	perm varchar2(10) CONSTRAINTS member_perm_ck
-		CHECK (perm IN ('HOST','MANAGER'))
+	auth varchar2(10) CONSTRAINTS member_auth_ck
+		CHECK (auth IN ('HOST','MANAGER'))
 );
+SELECT * FROM MEMBER;
+DROP TABLE MEMBER;
 
 --활동로그
 CREATE TABLE log(
