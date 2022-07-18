@@ -52,6 +52,11 @@ public class MainController {
 		d.addAttribute("proc","del");
 		return "WEB-INF\\views\\ScheduleDetail.jsp";
 	}
-
+	// http://localhost:6080/Team5/getUserName.do
+	@RequestMapping("getUserName.do")
+	public String getUserName(@RequestParam("pno") int pno, Model d){
+		d.addAttribute("userlist", service.getUserName(pno));
+		return "WEB-INF\\views\\Member.jsp";
+	}
 	
 }

@@ -36,6 +36,10 @@ public class MainService {
 		return dao.getUserNoList(itemno);
 	}
 
+	public List<String> getUserName(int pno) {
+		return dao.getUserName(pno);
+	}
+
 
 
 	

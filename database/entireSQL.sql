@@ -51,6 +51,7 @@ CREATE TABLE member(
 );
 SELECT * FROM MEMBER;
 DROP TABLE MEMBER;
+INSERT INTO MEMBER values(10020,2,'MANAGER');
 
 --활동로그
 CREATE TABLE log(
@@ -62,6 +63,12 @@ CREATE TABLE log(
 	category varchar2(50)
 );
 
+SELECT * FROM MEMBER;
+
+SELECT a.name
+FROM MEMBER m, account a
+WHERE  m.userno = a.userno
+AND pno=2;
 --참여인원
 CREATE TABLE participate(
 	itemno NUMBER REFERENCES schedule(itemno),
