@@ -6,6 +6,7 @@ CREATE TABLE project(
 	purpose varchar2(50),
 	code char(8)
 );
+SELECT * FROM project;
 
 --일정
 CREATE TABLE schedule(
@@ -18,17 +19,20 @@ CREATE TABLE schedule(
 	comment varchar2(100),
 	perm varchar2(50)
 );
+SELECT * FROM SCHEDULE ;
 
 --회원
-CREATE TABLE user(
+CREATE TABLE userTable(
 	userno NUMBER PRIMARY KEY,
 	email varchar2(50),
 	id varchar2(12),
 	pw varchar2(16),
 	name varchar2(50),
 	joindate DATE,
-	agree boolean
+	agree char(1) CONSTRAINTS userTable_agree_ck
+		CHECK (agree IN ('Y','N'))
 );
+SELECT * FROM USERTable;
 
 --팀원
 CREATE TABLE member(
