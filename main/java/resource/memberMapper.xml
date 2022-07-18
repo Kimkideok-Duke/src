@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="team5.dao.MemberDao">
+	<select id="getMemberList" resultType="memberaccountjoin" parameterType="int">
+		SELECT m.userno, pno, auth, name
+		FROM MEMBER m, ACCOUNT a 
+		WHERE m.userno = a.userno
+		AND pno = #{pno}
+		ORDER BY AUTH
+	</select>
+	<delete id="deleteMember" parameterType="member">
+	 	DELETE
+		FROM MEMBER
+		WHERE userno = #{userno}
+		AND pno = #{pno}
+	</delete>
+</mapper>
+
+
+   

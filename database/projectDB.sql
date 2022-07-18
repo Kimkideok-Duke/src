@@ -20,7 +20,7 @@ CREATE TABLE MEMBER (
     pno NUMBER NOT NULL,
     auth varchar2(50) NOT NULL
 );
-SELECT * FROM account;
+SELECT * FROM account; 
 INSERT INTO MEMBER VALUES (10001, 2, 'host');
 
 SELECT * FROM MEMBER;
@@ -40,6 +40,17 @@ INSERT INTO MEMBER VALUES (#{userno}, #{pno), 'host')
 SELECT pno
 FROM PROJECT
 WHERE code=#{code}
+
+SELECT m.userno, pno, name, auth
+FROM MEMBER m, ACCOUNT a 
+WHERE m.userno = a.userno
+AND pno = #{pno}
+ORDER BY AUTH
+
+DELETE
+FROM MEMBER
+WHERE userno = #{userno}
+AND pno = #{pno}
 */
 INSERT INTO PROJECT values (seq_pno.nextval, '첫프로젝트', '타입', '목적', '12345678');
 
@@ -50,4 +61,11 @@ AND USERNO = 10001;
 
 SELECT pno
 FROM PROJECT
-WHERE code='12345678';
+WHERE code='55574275';
+
+SELECT m.userno, pno, name, auth
+FROM MEMBER m, ACCOUNT a 
+WHERE m.userno = a.userno
+AND pno = 2
+ORDER BY AUTH;
+
