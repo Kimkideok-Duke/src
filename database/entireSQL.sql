@@ -32,7 +32,14 @@ CREATE TABLE userTable(
 	agree char(1) CONSTRAINTS userTable_agree_ck
 		CHECK (agree IN ('Y','N'))
 );
+CREATE SEQUENCE usertable_seq
+	START WITH 1
+	MINVALUE 1
+	MAXVALUE 999999
+	INCREMENT BY 1;
+
 SELECT * FROM USERTable;
+INSERT INTO userTable values(usertable_seq.nextval,'asd123@naver.com','asd123','aa1111','홍길동',sysdate,'Y');
 
 --팀원
 CREATE TABLE member(
