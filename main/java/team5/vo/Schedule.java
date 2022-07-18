@@ -1,13 +1,11 @@
 package team5.vo;
 
-import oracle.sql.DATE;
-
 public class Schedule {
 	private int itemno;
 	private int pno;
 	private String item;
 	private String progress;
-	private DATE deadline;
+	private String deadline;
 	private String comm;
 	private String perm;
 	public Schedule() {
@@ -20,7 +18,7 @@ public class Schedule {
 		this.itemno = itemno;
 	}
 
-	public Schedule(int itemno, String item, String progress, DATE deadline, String comm) {
+	public Schedule(int itemno, String item, String progress, String deadline, String comm) {
 		super();
 		this.itemno = itemno;
 		this.item = item;
@@ -29,7 +27,7 @@ public class Schedule {
 		this.comm = comm;
 	}
 
-	public Schedule(int pno, String item, String progress, DATE deadline, String comm, String perm) {
+	public Schedule(int pno, String item, String progress, String deadline, String comm, String perm) {
 		super();
 		this.pno = pno;
 		this.item = item;
@@ -39,7 +37,7 @@ public class Schedule {
 		this.perm = perm;
 	}
 
-	public Schedule(String item, String progress, DATE deadline, String comm) {
+	public Schedule(String item, String progress, String deadline, String comm) {
 		super();
 		this.item = item;
 		this.progress = progress;
@@ -47,7 +45,7 @@ public class Schedule {
 		this.comm = comm;
 	}
 
-	public Schedule(int itemno, int pno, String item, String progress, DATE deadline, String comm, String perm) {
+	public Schedule(int itemno, int pno, String item, String progress, String deadline, String comm, String perm) {
 		super();
 		this.itemno = itemno;
 		this.pno = pno;
@@ -81,10 +79,10 @@ public class Schedule {
 	public void setProgress(String progress) {
 		this.progress = progress;
 	}
-	public DATE getDeadline() {
+	public String getDeadline() {
 		return deadline;
 	}
-	public void setDeadline(DATE deadline) {
+	public void setDeadline(String deadline) {
 		this.deadline = deadline;
 	}
 	public String getComm() {
