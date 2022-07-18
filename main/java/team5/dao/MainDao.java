@@ -21,7 +21,7 @@ public interface MainDao {
 
 	public List<Integer> getUserNoList(int itemno);
 
-	public List<String> getUserName(int pno);
+	public List<String> getNames(int itemno);
 
 
 }

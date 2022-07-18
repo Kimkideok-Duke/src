@@ -32,20 +32,25 @@
       
       --%>   
    });
-   function chMem(){
-	   
-   }
+function editMem(){
+	if(confirm("수정하시겠습니까?")){
+		//유효성 check
+		$("form").attr("action","${path}/updateSchedule.do");
+		$("form").submit();
+	}
+}
    
 </script>
 </head>
 
 <body>
   <h2>참여인원</h2>
-  <form method="post">
-	<c:forEach var="username" items="${userlist}">
-  	<input type="checkbox" name="${username}" value="${username}"> ${username}
-	</c:forEach>
-	<button type="button" onclick="chMem()">멤버변경</button>
+  	<form action="" method="post">
+	  	아이템 이름 <input name="item" value="${nameslist.get(0).item }" readonly>
+		<c:forEach var="names" items="${nameslist}">
+	  	<input type="checkbox" name="userno" value="${names.userno}"> ${names.name}
+		</c:forEach>
+		<button type="button" onclick="editMem()">멤버변경</button>
 	</form>
 </body>
 </html>

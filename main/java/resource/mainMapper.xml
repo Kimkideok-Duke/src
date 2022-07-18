@@ -41,10 +41,10 @@
 		FROM schedule
 		WHERE itemno = #{itemno}
 	</delete>
-	<select id="getUserName" resultType="String" parameterType="int">
-		SELECT a.name
-		FROM MEMBER m, account a
-		WHERE  m.userno = a.userno
-		AND pno=#{pno}
+	<select id="getNames" resultType="names" parameterType="int">
+		SELECT a.userno, s.item, a.name
+		FROM participate p, account a, schedule s
+		WHERE p.itemno = s.itemno AND p.userno = a.userno
+		AND p.itemno = #{itemno}
 	</select>
 </mapper>

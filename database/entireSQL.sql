@@ -40,7 +40,6 @@ CREATE SEQUENCE account_seq
 
 SELECT * FROM account;
 INSERT INTO account values(account_seq.nextval,'asd123@naver.com','asd123','aa1111','홍길동',sysdate,'Y');
-DROP userTable;
 
 --팀원
 CREATE TABLE member(
@@ -51,7 +50,7 @@ CREATE TABLE member(
 );
 SELECT * FROM MEMBER;
 DROP TABLE MEMBER;
-INSERT INTO MEMBER values(10020,2,'MANAGER');
+INSERT INTO MEMBER values(10001,2,'MANAGER');
 
 --활동로그
 CREATE TABLE log(
@@ -74,6 +73,9 @@ CREATE TABLE participate(
 	itemno NUMBER REFERENCES schedule(itemno),
 	userno NUMBER REFERENCES account(userno)
 );
+SELECT s.item, a.name FROM participate p, account a, schedule s WHERE p.itemno = s.itemno AND p.userno = a.userno AND p.itemno = 3;
+INSERT INTO PARTICIPATE values(3,10001);
+INSERT INTO PARTICIPATE values(3,10020);
 
 --공지사항
 CREATE TABLE notice(

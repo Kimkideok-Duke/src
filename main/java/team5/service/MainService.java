@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import team5.dao.MainDao;
 import team5.vo.Schedule;
-
+   
 @Service
 public class MainService {
 	@Autowired(required=false)
@@ -36,12 +36,8 @@ public class MainService {
 		return dao.getUserNoList(itemno);
 	}
 
-	public List<String> getUserName(int pno) {
-		return dao.getUserName(pno);
+	public List<String> getNames(int itemno) {
+		return dao.getNames(itemno);
 	}
-
-
-
-	
 
 }

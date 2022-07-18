@@ -67,7 +67,7 @@
 		<tr><th>아이템</th><th>인원</th><th>진행도</th><th>마감일</th><th>댓글</th></tr>
 		<c:forEach var="schedule" items="${slist}">
 		<tr ondblclick="goDetail(${schedule.itemno})"><td>${schedule.item}</td>
-		<td>인원..</td><td>${schedule.progress}</td>
+		<td><img src="${path}/a00_com/member.jpg" height="30" width="30"/></td><td>${schedule.progress}</td>
 		<td>${schedule.deadline}</td><td>${schedule.comm}</td></tr>
 		</c:forEach>
 	</table>

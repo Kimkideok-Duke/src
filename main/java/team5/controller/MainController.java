@@ -32,6 +32,7 @@ public class MainController {
 	//	d.addAttribute("usernolist",service.getUserNoList(itemno));
 		return "WEB-INF\\views\\ScheduleDetail.jsp";
 	}
+	
 	@RequestMapping("insertSchedule.do")
 	public String insertSchedule(Schedule ins, Model d){
 		service.insertSchedule(ins);
@@ -52,10 +53,10 @@ public class MainController {
 		d.addAttribute("proc","del");
 		return "WEB-INF\\views\\ScheduleDetail.jsp";
 	}
-	// http://localhost:6080/Team5/getUserName.do
-	@RequestMapping("getUserName.do")
-	public String getUserName(@RequestParam("pno") int pno, Model d){
-		d.addAttribute("userlist", service.getUserName(pno));
+	// http://localhost:7080/Team5/getNames.do
+	@RequestMapping("getNames.do")
+	public String getNames(@RequestParam(value = "itemno", defaultValue = "3") int itemno, Model d){
+		d.addAttribute("nameslist", service.getNames(itemno));
 		return "WEB-INF\\views\\Member.jsp";
 	}
 	
