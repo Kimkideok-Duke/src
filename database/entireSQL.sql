@@ -32,15 +32,15 @@ CREATE TABLE account(
 	agree number(1) NOT NULL CHECK (agree IN (0,1))
 );
 
-CREATE SEQUENCE usertable_seq
-	START WITH 1
-	MINVALUE 1
+CREATE SEQUENCE account_seq
+	START WITH 10000
+	MINVALUE 10000
 	MAXVALUE 999999
 	INCREMENT BY 1;
 
-SELECT * FROM USERTable;
-INSERT INTO userTable values(usertable_seq.nextval,'asd123@naver.com','asd123','aa1111','홍길동',sysdate,'Y');
-
+SELECT * FROM account;
+INSERT INTO account values(account_seq.nextval,'asd123@naver.com','asd123','aa1111','홍길동',sysdate,'Y');
+DROP userTable;
 
 --팀원
 CREATE TABLE member(

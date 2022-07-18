@@ -32,7 +32,7 @@
 	UPDATE schedule
 		SET item = #{item,jdbcType=VARCHAR},
 			progress = #{progress,jdbcType=VARCHAR},
-			deadline = #{deadline,jdbcType=VARCHAR},
+			deadline = #{deadline,jdbcType=DATE},
 			comm = #{comm,jdbcType=VARCHAR}
 		WHERE itemno = #{itemno}
 	</update>

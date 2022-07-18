@@ -48,7 +48,7 @@
 <body>
 
 <form method="get">
-	프로젝트 번호<input name="pno" value="1" readonly/>
+	프로젝트 번호<input name="pno" value="2"/>
 	아이템 <input name="item" value="플로우차트"/>
 	인원 
 	진행도 <select name="progress">
