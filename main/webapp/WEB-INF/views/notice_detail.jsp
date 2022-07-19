@@ -96,6 +96,7 @@ form{
 </script>
 </head>
 <script type="text/javascript">
+var pnoCheck = "<%=session.getAttribute("pno")%>";
 	function goupt(noticeno){
 		if(confirm("수정화면으로 이동하시겠습니까?")){
 			location.href="${path}/noticeGoUpdate.do?noticeno="+noticeno;

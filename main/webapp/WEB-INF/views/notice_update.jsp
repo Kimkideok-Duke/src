@@ -93,13 +93,15 @@ table.type09 td {
 </head>
 <script>
 	function goupdate(){
-		if(confirm("수정하시겠습니까?")){
-			var titleVal = $("[name=title]").val();
-			var contentVal = $("[name=content]").val();
-			// 수정된 내용이 없으면 수정불가 유효성 검사
-			$("form").attr("action","${path}/noticeUpdate.do");
-			$("form").submit();
-		}
+		if(<%=session.getAttribute("auth")%>=="HOST"){
+			if(confirm("수정하시겠습니까?")){
+				var titleVal = $("[name=title]").val();
+				var contentVal = $("[name=content]").val();
+				// 수정된 내용이 없으면 수정불가 유효성 검사
+				$("form").attr("action","${path}/noticeUpdate.do");
+				$("form").submit();
+			}
+		}	
 	}
 	var upt = "${upt}"
 	if(upt=="Y"){

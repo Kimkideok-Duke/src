@@ -89,8 +89,6 @@ form{
 		location.href="${path}/noticeGoWrite.do";
 	}
 </script>
-<%=session.getAttribute("userId")%>
-<%=session.getAttribute("pno")%>
 <body>
 
 	<div class="out">
@@ -107,7 +105,9 @@ form{
 				</thead>
 				<tbody>
 				<c:forEach var="nl" items="${nolist}">
-				<tr ondblclick="goDetail(${nl.noticeno})"><td>${nl.noticeno}</td><td>${nl.title}</td><td>호스트</td><td><fmt:formatDate value="${nl.creatdate}"/></td><td>${nl.views}</td></tr>
+					<c:if test="${nl.pno}=${parm.pno}">
+						<tr ondblclick="goDetail(${nl.noticeno})"><td>${nl.noticeno}</td><td>${nl.title}</td><td>호스트</td><td><fmt:formatDate value="${nl.creatdate}"/></td><td>${nl.views}</td></tr>
+					</c:if>
 				</c:forEach>
 				</tbody>
 				</table>
