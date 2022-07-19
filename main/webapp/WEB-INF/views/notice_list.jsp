@@ -79,7 +79,6 @@ form{
 	display:block;
 }
 </style>
-
 </head>
 <script>
 	function goDetail(noticeno){
@@ -88,6 +87,7 @@ form{
 	function goWrite(){
 		location.href="${path}/noticeGoWrite.do";
 	}
+
 </script>
 <body>
 
@@ -96,6 +96,7 @@ form{
 		<div class="my-box">
 		<form action="${path}/noticeList.do">
 			<input name="title" placeholder="제목" value="${notice.title}">
+			<input type="hidden" name="pno" value="${param.pno }"/>
 			<input type="submit" value="검색" class="button">
 		</form>
 			
@@ -104,10 +105,11 @@ form{
 				<tr><th>No.</th><th>제목</th><th>작성자</th><th>작성일자</th><th>조회수</th></tr>
 				</thead>
 				<tbody>
+				<% int cnt=0; %>
 				<c:forEach var="nl" items="${nolist}">
-					<c:if test="${nl.pno}=${parm.pno}">
-						<tr ondblclick="goDetail(${nl.noticeno})"><td>${nl.noticeno}</td><td>${nl.title}</td><td>호스트</td><td><fmt:formatDate value="${nl.creatdate}"/></td><td>${nl.views}</td></tr>
-					</c:if>
+						<c:if test="${nl.pno eq param.pno}">
+						<tr ondblclick="goDetail(${nl.noticeno})"><td><%= cnt+=1 %></td><td>${nl.title}</td><td>호스트</td><td><fmt:formatDate value="${nl.creatdate}"/></td><td>${nl.views}</td></tr>
+						</c:if>
 				</c:forEach>
 				</tbody>
 				</table>
