@@ -232,11 +232,11 @@ if(proc4=="W"){
 	alert("회원탈퇴가 완료되었습니다.\n이용해주셔서 감사합니다.");
 	location.href="${path}/login.do";
 }
-/*
+
 function goDetail(pno){
 	location.href="Main.do?pno="+pno;
 }
-*/
+
 </script>
 	
 
