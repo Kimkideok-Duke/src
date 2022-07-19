@@ -213,7 +213,6 @@ td {
 		location.href="${path}/noticeGoWrite.do?pno="+${param.pno };
 	}
 	
-<%--var pnosession = '<%=String.valueOf(session.getAttribute("pno"))%>'--%>
 </script>
 <body>
   <section id="container">
@@ -223,7 +222,7 @@ td {
     <div class="pm_wrapper" onclick="main()"><img src="a00_com/img/PM.png" width=140px></div>
     <li><a href="#" class="icon"><img src="a00_com/img/schedule.png" width=25px> 일정관리</a></li>
     <li><a href="#" class="icon"><img src="a00_com/img/alarm.png" width=25px> 알림</a></li>
-    <li><a href="#" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
+    <li><a href="${path}/noticeList.do?pno=${param.pno }" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
     
     <div style="padding-top:100%;">
     <li><a href="#" class="icon" ><img src="a00_com/img/add.png" width=25px> 팀원추가</a></li>
@@ -266,7 +265,8 @@ td {
 				<% int cnt=0; %>
 				<c:forEach var="nl" items="${nolist}">
 						<c:if test="${nl.pno eq param.pno}">
-						<tr ondblclick="goDetail(${nl.noticeno})"><td><%= cnt+=1 %></td><td>${nl.title}</td><td>호스트</td><td><fmt:formatDate value="${nl.creatdate}"/></td><td>${nl.views}</td></tr>
+						<tr ondblclick="goDetail(${nl.noticeno})"><td><%= cnt+=1 %></td><td>${nl.title}</td>
+							<td>호스트</td><td><fmt:formatDate value="${nl.creatdate}"/></td><td>${nl.views}</td></tr>
 						</c:if>
 				</c:forEach>
 				</tbody>

@@ -222,26 +222,16 @@ td {
 </script>
 </head>
 <script type="text/javascript">
-var pnosession = sessionStorage.getItem("pno");
-var authsession = sessionStorage.getItem("auth");
 
 	function goupt(noticeno){
-		if(authsession=="HOST"){
-			if(confirm("수정화면으로 이동하시겠습니까?")){
-				location.href="${path}/noticeGoUpdate.do?noticeno="+noticeno;
-			}
-		}else{
-			alert("호스트만 수정가능합니다.");
-		}	
+		if(confirm("수정화면으로 이동하시겠습니까?")){
+			location.href="${path}/noticeGoUpdate.do?noticeno="+noticeno;
+		}
 	}
 	function godel(noticeno){
-		if(authsession =="HOST"){
-			if(confirm("삭제하시겠습니까?")){
-				location.href="${path}/noticeDelete.do?noticeno="+noticeno;
-			}
-		}else{
-			alert("호스트만 삭제가능합니다.");
-		}	
+		if(confirm("삭제하시겠습니까?")){
+			location.href="${path}/noticeDelete.do?noticeno="+noticeno;
+		}
 	}
 	function gomain(){
 		location.href="${path}/noticeList.do?pno="+${notice.pno};
@@ -250,7 +240,7 @@ var authsession = sessionStorage.getItem("auth");
 	var proc = "${proc}"
 	if(proc=="del"){
 		alert("삭제성공\n조회 리스트화면으로 이동!")
-		location.href="${path}/noticeList.do";
+		location.href="${path}/noticeList.do?pno="+${notice.pno };
 	}	
 </script>
 <body>
@@ -261,8 +251,7 @@ var authsession = sessionStorage.getItem("auth");
     <div class="pm_wrapper" onclick="main()"><img src="a00_com/img/PM.png" width=140px></div>
     <li><a href="#" class="icon"><img src="a00_com/img/schedule.png" width=25px> 일정관리</a></li>
     <li><a href="#" class="icon"><img src="a00_com/img/alarm.png" width=25px> 알림</a></li>
-    <li><a href="${path}/noticeList.do?pno="+"${notice.pno }" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
-    
+    <li><a href="${path}/noticeList.do?pno=${notice.pno }" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
     <div style="padding-top:100%;">
     <li><a href="#" class="icon" ><img src="a00_com/img/add.png" width=25px> 팀원추가</a></li>
     <li><a href="#" class="icon" ><img src="a00_com/img/mypage.png" width=25px> 마이페이지</a></li>
@@ -293,7 +282,9 @@ var authsession = sessionStorage.getItem("auth");
 			<div class="my-box">
 				<table class="type09">
 					<thead>
-						<tr><th width="50">공지번호<br> | ${notice.noticeno}</th><th width="230">제목<br>| ${notice.title}</th><th width="70">작성일자<br> | <fmt:formatDate value="${notice.creatdate}"/></th></tr>
+						<tr><th width="50">공지번호<br> | ${notice.noticeno}</th>
+						<th width="230">제목<br>| ${notice.title}</th>
+						<th width="70">작성일자<br> | <fmt:formatDate value="${notice.creatdate}"/></th></tr>
 					</thead>
 					<tbody>
 						<tr><td colspan='3'>${notice.content}</td></tr>

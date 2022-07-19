@@ -225,7 +225,7 @@ td {
     <div class="pm_wrapper" onclick="main()"><img src="a00_com/img/PM.png" width=140px></div>
     <li><a href="#" class="icon"><img src="a00_com/img/schedule.png" width=25px> 일정관리</a></li>
     <li><a href="#" class="icon"><img src="a00_com/img/alarm.png" width=25px> 알림</a></li>
-    <li><a href="#" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
+    <li><a href="${path}/noticeList.do?pno=${param.pno }" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
     
     <div style="padding-top:100%;">
     <li><a href="#" class="icon" ><img src="a00_com/img/add.png" width=25px> 팀원추가</a></li>
@@ -260,6 +260,7 @@ td {
 						<p class=".psty">내용 </p><textarea cols="80" rows="10" name="content" placeholder="내용을 입력하세요."></textarea>
 						<input type="button" value="등록" onclick="goInsert()" class="button">
 						<input type="button" value="리스트" onclick="gomain()" class="button">
+						<input type="hidden" name="pno" value="${param.pno }"/>
 					</div>
 				</form>
 			</div>	
