@@ -38,7 +38,8 @@ public class MainController {
 	}
 
 	@RequestMapping("Insert.do")
-	public String Insert(){
+	public String Insert(HttpSession session, Model d){
+		d.addAttribute("pno", session.getAttribute("pno"));
 		return "WEB-INF\\views\\insertSchedule.jsp";
 	}
 	@RequestMapping("ScheduleDetail.do")
@@ -48,8 +49,7 @@ public class MainController {
 	}
 	
 	@RequestMapping("insertSchedule.do")
-	public String insertSchedule(HttpSession session, Schedule ins, Model d){
-		d.addAttribute("pno", session.getAttribute("pno"));
+	public String insertSchedule(Schedule ins, Model d){
 		service.insertSchedule(ins);
 //		service01.insertLog(ins);
 //		service01.ck_update(ins);

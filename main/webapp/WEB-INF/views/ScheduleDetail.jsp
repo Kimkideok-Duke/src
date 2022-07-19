@@ -170,14 +170,14 @@ td {
 <body>
 <section id="container">
     <div style="width: 100%; flex-grow: 1; position: relative;">
-<div class="menu">
+<div class="menu" style="height: 120%;">
     <ul>
     <div class="pm_wrapper" onclick="main()"><img src="a00_com/img/PM.png" width=140px></div>
-    <li><a href="#" class="icon"><img src="a00_com/img/schedule.png" width=25px> 일정관리</a></li>
-    <li><a href="#" class="icon"><img src="a00_com/img/alarm.png" width=25px> 알림</a></li>
-    <li><a href="#" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
+    <li><a href="${path}/Main.do" class="icon"><img src="a00_com/img/schedule.png" width=25px> 일정관리</a></li>
+    <li><a href="${path}/getAlert.do" class="icon"><img src="a00_com/img/alarm.png" width=25px> 알림</a></li>
+    <li><a href="${path}/noticeList.do?pno=${slist.get(0).pno}" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
     
-    <div style="padding-top:100%;">
+    <div>
     <li><a href="${path}/getMemberList.do?pno=${slist.get(0).pno}" class="icon" ><img src="a00_com/img/add.png" width=25px> 팀원관리</a></li>
     <li><a href="${path}/mypage2.do" class="icon" ><img src="a00_com/img/mypage.png" width=25px> 마이페이지</a></li>
     <li><a href="${path}/logout.do" class="icon" >로그아웃</a></li>
@@ -192,7 +192,7 @@ td {
         top: 0;
         right: 0;
         bottom: 0;
-        height: 100%;
+        height: 150%;
         left: 190px;
         overflow: hidden;
        /* justify-content: center;*/
