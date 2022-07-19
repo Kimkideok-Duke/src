@@ -29,26 +29,28 @@ public class MainController {
 	// http://localhost:7080/team5/Main.do
 	// http://220.73.54.156:8080/Team5/Main.do
 	@RequestMapping("Main.do")
-	public String Main(HttpSession session, @RequestParam("pno") int pno, Model d){
+	public String Main(HttpSession session, @RequestParam(value = "pno", defaultValue = "2") int pno, Model d){
 		d.addAttribute("slist", service.getScheduleList(pno));
 		// 권한 설정
-		d.addAttribute("auth", serviceM.getAuth(new Member((int)session.getAttribute("userNo"), pno)));
-		session.setAttribute("auth",serviceM.getAuth(new Member((int)session.getAttribute("userNo"), pno)) );
+//		d.addAttribute("auth", serviceM.getAuth(new Member((int)session.getAttribute("userNo"), pno)));
+		d.addAttribute("auth", "CREATOR");
+//		session.setAttribute("auth",serviceM.getAuth(new Member((int)session.getAttribute("userNo"), pno)) );
 		return "WEB-INF\\views\\Main.jsp";
 	}
 
 	@RequestMapping("Insert.do")
 	public String Insert(){
-		return "WEB-INF\\views\\insertSchedule2.jsp";
+		return "WEB-INF\\views\\insertSchedule.jsp";
 	}
 	@RequestMapping("ScheduleDetail.do")
 	public String ScheduleDetail(@RequestParam("itemno") int itemno, Model d){
 		d.addAttribute("schedule", service.getScheduleDetail(itemno));
+		d.addAttribute("usernolist",service.getUserNoList(itemno));
 		return "WEB-INF\\views\\ScheduleDetail.jsp";
 	}
 	
 	@RequestMapping("insertSchedule.do")
-	public String insertSchedule(@RequestParam("userno") int itemno,Schedule ins, Model d){
+	public String insertSchedule(Schedule ins, Model d){
 		service.insertSchedule(ins);
 		d.addAttribute("isInsert","Y");
 		return "WEB-INF\\views\\insertSchedule.jsp";

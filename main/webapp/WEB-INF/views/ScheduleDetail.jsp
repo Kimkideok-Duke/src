@@ -45,8 +45,8 @@
 <body>
 
 <form method="post">
-	<input name="itemno" value="${schedule.itemno }"/>
-	<input name="pno" value="${schedule.pno }"/>
+	<input type="hidden" name="itemno" value="${schedule.itemno }"/>
+	<input type="hidden" name="pno" value="${schedule.pno }"/>
 	아이템 <input name="item" value="${schedule.item }"/>
 	인원 
 	진행도 <select name="progress">
@@ -66,14 +66,12 @@
 <script type="text/javascript">
 function updateProc(){
 	if(confirm("수정하시겠습니까?")){
-		//유효성 check
 		$("form").attr("action","${path}/updateSchedule.do");
 		$("form").submit();
 	}
 }
 function deleteProc(){
 	if(confirm("삭제하시겠습니까?")){
-		//유효성 check
 		$("form").attr("action","${path}/deleteSchedule.do");
 		$("form").submit();
 	}

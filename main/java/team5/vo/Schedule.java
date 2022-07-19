@@ -11,6 +11,7 @@ public class Schedule {
 	private String deadline_s;
 	private String comm;
 	private String auth;
+	private int userno;
 	public Schedule() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -118,6 +119,14 @@ public class Schedule {
 
 	public void setDeadline_s(String deadline_s) {
 		this.deadline_s = deadline_s;
+	}
+
+	public int getUserno() {
+		return userno;
+	}
+
+	public void setUserno(int userno) {
+		this.userno = userno;
 	}
 	
 	
