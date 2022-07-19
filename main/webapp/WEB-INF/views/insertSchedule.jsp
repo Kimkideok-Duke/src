@@ -134,7 +134,8 @@ c.content {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	width: 300px;
+	width: 400px;
+	background-color: #e6ede4;
 	
 	.input{
 		width:100%;
@@ -143,7 +144,18 @@ c.content {
 .btn {
 	border-radius: 12px;
 	transition-duration: 0.4s;
-	
+}
+.main {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width:100%;
+}
+h2{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 }
 </style>
 <script src="${path}/a00_com/jquery.min.js"></script>
@@ -171,9 +183,10 @@ c.content {
 </head>
 
 <body>
+
 <section id="container">
     <div style="width: 100%; flex-grow: 1; position: relative;">
-<div class="menu" style="height: 120%;">
+<div class="menu" style="height: 100%;">
     <ul>
     <div class="pm_wrapper" onclick="main()"><img src="a00_com/img/PM.png" width=140px></div>
     <li><a href="${path}/Main.do" class="icon"><img src="a00_com/img/schedule.png" width=25px> 일정관리</a></li>
@@ -195,7 +208,7 @@ c.content {
         top: 0;
         right: 0;
         bottom: 0;
-        height: 150%;
+        height: 100%;
         left: 190px;
         overflow: hidden;
        /* justify-content: center;*/
@@ -203,9 +216,12 @@ c.content {
         display: flex;
         flex-direction: column;
         border-radius: 20px 0px 0px 0px;">
+        
+        <h2>아이템 등록</h2>
 <div class="inputs">        
+
 <form method="post">
-	<div class="input"><div>프로젝트 번호</div><input name="pno" value="${pno}"/></div>
+	<div class="input"><input type="hidden" name="pno" value="${pno}"/></div>
 	<div class="input"><div>아이템</div><input name="item" value="플로우차트"/></div>
 	<div class="input"><div>진행도</div><select name="progress">
 		<option value="기본" selected>기본</option>

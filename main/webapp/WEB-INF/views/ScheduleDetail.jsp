@@ -145,6 +145,35 @@ td {
   border-bottom: 2px solid #cccccc;
   height: 70px;
 }
+.inputs{
+	border-style: solid;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 400px;
+	background-color: #e6ede4;
+	
+	.input{
+		width:100%;
+	}
+}
+.btn {
+	border-radius: 12px;
+	transition-duration: 0.4s;
+}
+.main {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width:100%;
+}
+h2{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
 </style>
 <script src="${path}/a00_com/jquery.min.js"></script>
 <script src="${path}/a00_com/popper.min.js"></script>
@@ -170,7 +199,7 @@ td {
 <body>
 <section id="container">
     <div style="width: 100%; flex-grow: 1; position: relative;">
-<div class="menu" style="height: 120%;">
+<div class="menu" style="height: 100%;">
     <ul>
     <div class="pm_wrapper" onclick="main()"><img src="a00_com/img/PM.png" width=140px></div>
     <li><a href="${path}/Main.do" class="icon"><img src="a00_com/img/schedule.png" width=25px> 일정관리</a></li>
@@ -192,7 +221,8 @@ td {
         top: 0;
         right: 0;
         bottom: 0;
-        height: 150%;
+        width:100%;
+        height: 100%;
         left: 190px;
         overflow: hidden;
        /* justify-content: center;*/
@@ -200,26 +230,26 @@ td {
         display: flex;
         flex-direction: column;
         border-radius: 20px 0px 0px 0px;">
-
+        <h2>아이템 관리</h2>
+<div class="inputs">
 <form method="post">
 	<input type="hidden" name="itemno" value="${schedule.itemno }"/>
 	<input type="hidden" name="pno" value="${schedule.pno }"/>
-	<div>
-	아이템 <input name="item" value="${schedule.item }"/></div>
-	진행도 <select name="progress">
+	<div class="input">아이템 <input name="item" value="${schedule.item }"/></div>
+	<div class="input">진행도 <select name="progress">
 		<option value="기본" selected>기본</option>
 		<option value="진행중">진행중</option>
 		<option value="막힘">막힘</option>
 		<option value="완료">완료</option>
-		</select>
-	마감일 <input type="date" name="deadline_s" value="${schedule.deadline}" /> 
-	댓글 <input name="comm" value="${schedule.comm }"/>
-	<input name="auth" value="${schedule.auth }"/>
-	<button type="button" onclick="updateProc()">수정</button>
-	<button type="button" onclick="deleteProc()">삭제</button>
-	<button type="button" onclick="goMain()">메인화면</button>	
+		</select></div>
+	<div class="input">마감일 <input type="date" name="deadline_s" value="${schedule.deadline}" /> </div>
+	<div class="input">댓글 <input name="comm" value="${schedule.comm }"/></div>
+	<div class="input"><input type="hidden" name="auth" value="${schedule.auth }"/></div>
+	<div class="btn"><button type="button" onclick="updateProc()">수정</button></div>
+	<div class="btn"><button type="button" onclick="deleteProc()">삭제</button></div>
+	<div class="btn"><button type="button" onclick="goMain()">메인화면</button></div>
 </form>
-
+	</div>
      </div>
   </div>
 </section>
