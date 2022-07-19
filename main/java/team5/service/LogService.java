@@ -14,8 +14,8 @@ public class LogService {
 	@Autowired(required=false)
 	private LogDao dao;
 	
-	public Log insertLog(Schedule ins){
-		return dao.insertLog(ins);    
+	public void insertLog(Schedule upt){
+		 dao.insertLog(upt);    
 }
 	public List<Log> logList(String item){
 		return dao.logList(item);
