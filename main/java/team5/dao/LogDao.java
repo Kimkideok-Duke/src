@@ -18,4 +18,8 @@ public interface LogDao {
 
 	public List<Log> selectLd(int itemno);
 
+	public void ck_update(Schedule ins);
+
+	public Schedule ck_data01(); 
+
 }

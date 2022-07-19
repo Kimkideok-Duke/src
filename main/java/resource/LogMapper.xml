@@ -35,4 +35,15 @@ from log
 where itemno = #{itemno}
 </select>
 
+
+<!-- 아이템 등록(비교)  -->
+	<insert id="ck_update" parameterType="schedule">
+		INSERT INTO ck_update
+		values(#{itemno}, #{pno}, #{item,jdbcType=VARCHAR},
+		#{progress,jdbcType=VARCHAR}, to_date(#{deadline_s,jdbcType=VARCHAR},'YYYY-MM-DD'),
+		#{comm,jdbcType=VARCHAR}, #{auth,jdbcType=VARCHAR})
+	</insert>
+	
+	
+	
 </mapper>
