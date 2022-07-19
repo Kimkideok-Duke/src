@@ -81,7 +81,7 @@
 			location.href="${path}/joinProjectPage.do";
 		}
 		else{
-			
+			sessionStorage.setItem("pno", pno );
 			location.href="${path}/Main.do?pno="+pno;
 		}
 	}

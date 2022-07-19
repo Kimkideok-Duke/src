@@ -197,7 +197,8 @@ td {
 </body>
 <script type="text/javascript">
 function main(){
-	location.href="main.do"
+	var pno = sessionStorage.getItem("pno");
+	location.href="${path}/Main.do?pno="+pno
 }
 </script>
 </html>

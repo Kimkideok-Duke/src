@@ -219,12 +219,11 @@ td {
       </div>
     </div>
   </section>
-
-
 </body>
 <script type="text/javascript">
 function main(){
-	location.href="main.do"
+	var pno = sessionStorage.getItem("pno");
+	location.href="${path}/Main.do?pno="+pno
 }
 </script>
 <!-- <div class="jumbotron text-center">
@@ -259,10 +258,6 @@ if(del=="Y"){
    location.href="${path}/getMemberList.do";
 }
 </script>
-<script type="text/javascript">
-function main(){
-	location.href="main.do"
-}
-</script>
+
 </body>
 </html>
