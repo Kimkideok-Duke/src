@@ -98,10 +98,9 @@ tr:hover{
 			<tr><th>알림내용</th></tr>
 			</thead>
 			<tbody>
-			<c:forEach var="alt" items="${alert}">
 			<!--(프로젝트명) 프로젝트의 (아이템명) 진행상태가 (진행상태)로 변경되었습니다.-->
-			<tr><td>${alt.title}+" 프로젝트의"+${alt.item}+ " 진행상태가"+${alt.progress}+"로 변경되었습니다."</td></tr>
-			</c:forEach>
+			<tr><td>${alert.title}+" 프로젝트의"+${alert.item}+ " 진행상태가"+${alert.progress}+"로 변경되었습니다."</td></tr>
+
 			</tbody>
 			</table>
 			<input type="button" value="알림삭제" class="button" style="margin:5px 0 0 0;">

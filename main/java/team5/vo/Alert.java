@@ -3,17 +3,25 @@ package team5.vo;
 public class Alert {
 	//m.userno, prj.TITLE, s.item, s.progress
 	private int userno;
+	private int pno;
 	private String title;
 	private String item;
 	private String progress;
 	public Alert() {
 		// TODO Auto-generated constructor stub
 	}
-	public Alert(int userno, String title, String item, String progress) {
+	public Alert(int userno, int pno, String title, String item, String progress) {
 		super();
 		this.userno = userno;
+		this.pno = pno;
 		this.title = title;
 		this.item = item;
+		this.progress = progress;
+	}
+	public Alert(int userno, int pno, String progress) {
+		super();
+		this.userno = userno;
+		this.pno = pno;
 		this.progress = progress;
 	}
 	public int getUserno() {
@@ -21,6 +29,12 @@ public class Alert {
 	}
 	public void setUserno(int userno) {
 		this.userno = userno;
+	}
+	public int getPno() {
+		return pno;
+	}
+	public void setPno(int pno) {
+		this.pno = pno;
 	}
 	public String getTitle() {
 		return title;
@@ -40,5 +54,6 @@ public class Alert {
 	public void setProgress(String progress) {
 		this.progress = progress;
 	}
+	
 	
 }

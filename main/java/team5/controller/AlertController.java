@@ -15,6 +15,7 @@ public class AlertController {
 	//http://localhost:7080/Team05/progressAlert.do
 	@RequestMapping("progressAlert.do")
 	public String progressAlert(Alert alt, Model m) {
+		alt = new Alert(10001, 2, "완료");
 		m.addAttribute("alert", service.progressAlert(alt));
 		return "WEB-INF\\views\\alert_push.jsp";
 	}
