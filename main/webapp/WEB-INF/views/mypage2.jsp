@@ -193,7 +193,7 @@
 
 <body>
 <h1 class="page_title">마이페이지</h1>
-<jsp:include page="${path}/myNav.do"/>
+<jsp:include page="/WEB-INF/views/Nav.jsp"/>
 
 	<div id="content_area">
 	<form action="${path}/changePw.do" method="post">

@@ -171,10 +171,4 @@ public class AccountController {
 		d.addAttribute("corNum", corNum);
 		return "pageJsonReport";
 	}
-	// 네비게이션 바
-	// http://localhost:7080/Team5/myNav.do
-	@RequestMapping("myNav.do")
-	public String myNav() {
-		return "WEB-INF\\views\\Nav.jsp";
-	}
 }
