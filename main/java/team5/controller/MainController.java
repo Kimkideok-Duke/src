@@ -44,7 +44,6 @@ public class MainController {
 	@RequestMapping("ScheduleDetail.do")
 	public String ScheduleDetail(@RequestParam("itemno") int itemno, Model d){
 		d.addAttribute("schedule", service.getScheduleDetail(itemno));
-	//	d.addAttribute("usernolist",service.getUserNoList(itemno));
 		return "WEB-INF\\views\\ScheduleDetail.jsp";
 	}
 	

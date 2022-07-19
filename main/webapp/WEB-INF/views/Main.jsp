@@ -51,7 +51,12 @@
    });
    
    function goDetail(itemno){
-		location.href="${path}/ScheduleDetail.do?itemno="+itemno;
+	   var auth = ${auth};
+	   if(auth=="CREATOR"){
+			location.href="${path}/ScheduleDetail.do?itemno="+itemno;		   
+	   }else{
+		   alert("수정 권한이 없습니다!");
+	   }
 	}
    function goInsert(){
 		location.href="${path}/Insert.do";
