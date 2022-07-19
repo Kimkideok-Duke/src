@@ -15,14 +15,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css" >
+<link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
 <style>
-h2 {
+h1 {
   text-align: center;
-}
-#head {
-  position: fixed;
-  width: 50%;
-  box-sizing: border-box;
+  margin:20px;
 }
 table.type09 {
   border-collapse: collapse;
@@ -56,31 +54,57 @@ table.type09 td {
 tr:hover{
   background: #f3f6f7;
 }
-button{
+.button{
   float: right;
+	background-Color:#7cc290;
+	border: 3px solid #7cc290;
+	border-radius: 5px;
+	text-align: center;
+	margin:0 0 0 5px;
+	width : 55px;
+	font-size: 13px;
+}
+.button:hover{
+  background-Color: #65a678;
+}
+.my-box { 
+	border:1px solid; 
+	padding:50px; 
+	margin:auto;
+	width: 700px;
 }
 </style>
 
-</head>
-<script>
+<script src="${path}/a00_com/jquery.min.js"></script>
+<script src="${path}/a00_com/popper.min.js"></script>
+<script src="${path}/a00_com/bootstrap.min.js"></script>
+<script src="${path}/a00_com/jquery-ui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
+<script type="text/javascript">
+   $(document).ready(function(){
+      <%-- 
+      
+      --%>   
+   });
 </script>
-<%=session.getAttribute("userId")%>
-<%=session.getAttribute("pno")%>
+</head>
 
 <body>
-<div><h2>공지사항</h2></div>
-	<form>
-		<div id="head">
+	<h1>알림</h1>
+	<div class="my-box">
 			<table class="type09">
 			<thead>
-			<tr><th>알림 내용</th></tr>
+			<tr><th>알림내용</th></tr>
 			</thead>
 			<tbody>
-			<tr><td>${}</td></tr>
+			<c:forEach var="alt" items="${alert}">
+			<!--(프로젝트명) 프로젝트의 (아이템명) 진행상태가 (진행상태)로 변경되었습니다.-->
+			<tr><td>${alt.title}+" 프로젝트의"+${alt.item}+ " 진행상태가"+${alt.progress}+"로 변경되었습니다."</td></tr>
+			</c:forEach>
 			</tbody>
 			</table>
-			<input type="button" value="알림 삭제" onclick="" style="float: right">
+			<input type="button" value="알림삭제" class="button" style="margin:5px 0 0 0;">
 		</div>
-	</form>
 </body>
 </html>

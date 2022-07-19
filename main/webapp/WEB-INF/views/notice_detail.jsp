@@ -18,13 +18,69 @@
 <link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css" >
 <link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
 <style>
-table, th, td { border: 1px solid black; border-collapse: collapse }
-table{
-	width:70%;
-	height: 200px;
+h1 {
+  text-align: center;
+  margin:20px;
+}
+.out {
+  margin:0 0 20px 0;
+}
+table.type09 {
+  border-collapse: collapse;
+  text-align: left;
+  line-height: 1.5;
+  width: 600px;
+  margin: auto;
+
+}
+table.type09 thead th {
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  color: #464d48;
+  border-bottom: 3px solid #8fbd9b;
+}
+table.type09 tbody th {
+  width: 150px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+  background: #f3f6f7;
+}
+table.type09 td {
+  width: 350px;
+  padding: 10px;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+  height : 300px;
+}
+.button{
+  float: right;
+	background-Color:#7cc290;
+	border: 3px solid #7cc290;
+	border-radius: 5px;
+	text-align: center;
+	margin:0 0 0 5px;
+	width : 55px;
+	font-size: 13px;
+	margin:5px 0 0 5px;
+}
+.button:hover{
+  background-Color: #65a678;
+}
+.my-box { 
+	border:1px solid; 
+	padding:50px; 
 	margin:auto;
+	width: 700px;
+}
+form{
+	float: right;
+	display:block;
 }
 </style>
+
 <script src="${path}/a00_com/jquery.min.js"></script>
 <script src="${path}/a00_com/popper.min.js"></script>
 <script src="${path}/a00_com/bootstrap.min.js"></script>
@@ -64,14 +120,22 @@ table{
 <%=session.getAttribute("userId")%>
 <%=session.getAttribute("pno")%>
 <body>
-<h2>공지사항</h2>
-		<table>
-			<tr><td>${notice.noticeno}</td><td>${notice.title}</td><td>${notice.creatdate}</td></tr>
-			<tr><td colspan='3'>${notice.content}</td></tr>
+<div class="out">
+<h1>공지사항</h1>
+	<div class="my-box">
+		<table class="type09">
+			<thead>
+				<tr><th>공지번호 | ${notice.noticeno}</th><th>제목 | ${notice.title}</th><th>작성일자 | <fmt:formatDate value="${notice.creatdate}"/></th></tr>
+			</thead>
+			<tbody>
+				<tr><td colspan='3'>${notice.content}</td></tr>
+			</tbody>
 		</table>
 
-<input type="button" value="수정" onclick="goupt(${notice.noticeno})">
-<input type="button" value="삭제" onclick="godel(${notice.noticeno})">
-<input type="button" value="리스트" onclick="gomain()">
+		<input type="button" value="수정" onclick="goupt(${notice.noticeno})" class="button">
+		<input type="button" value="삭제" onclick="godel(${notice.noticeno})" class="button">
+		<input type="button" value="리스트" onclick="gomain()" class="button">
+	</div>
+</div>	
 </body>
 </html>
