@@ -31,9 +31,8 @@ public class MainController {
 	@RequestMapping("Main.do")
 	public String Main(HttpSession session, @RequestParam("pno") int pno, Model d){
 		d.addAttribute("slist", service.getScheduleList(pno));
-		// 권한 설정
-		d.addAttribute("auth", serviceM.getAuth(new Member((int)session.getAttribute("userNo"), pno)));
-		session.setAttribute("auth",serviceM.getAuth(new Member((int)session.getAttribute("userNo"), pno)) );
+		// 권한 설정 (session)
+		session.setAttribute("auth", serviceM.getAuth(new Member((int)session.getAttribute("userNo"), pno)));
 		return "WEB-INF\\views\\Main.jsp";
 	}
 
@@ -44,12 +43,15 @@ public class MainController {
 	@RequestMapping("ScheduleDetail.do")
 	public String ScheduleDetail(@RequestParam("itemno") int itemno, Model d){
 		d.addAttribute("schedule", service.getScheduleDetail(itemno));
+	//	d.addAttribute("usernolist",service.getUserNoList(itemno));
 		return "WEB-INF\\views\\ScheduleDetail.jsp";
 	}
 	
 	@RequestMapping("insertSchedule.do")
 	public String insertSchedule(@RequestParam("userno") int itemno,Schedule ins, Model d){
 		service.insertSchedule(ins);
+		service01.insertLog(ins);
+		service01.ck_update(ins);
 		d.addAttribute("isInsert","Y");
 		return "WEB-INF\\views\\insertSchedule.jsp";
 	}
@@ -96,8 +98,11 @@ public class MainController {
         d.addAttribute("item",item);
 		d.addAttribute("progress", progress);
 		d.addAttribute("deadline", deadline);
-		d.addAttribute("comm", comm);
 		d.addAttribute("inlog",service01.selectLd(itemno));
+		d.addAttribute("data01");
+		d.addAttribute("data02");
+		d.addAttribute("data03");
+		d.addAttribute("data04");
 		return "WEB-INF\\views\\Log.jsp";
 	}
 
