@@ -18,7 +18,7 @@
 	}
 	.page_title{
 		text-align:center;
-		margin-top:150px;
+		margin-top:20px;
 		margin-bottom:50px;
 		color:rgb(22,160,133);
 		font-size:60px;
@@ -47,6 +47,11 @@
 		text-align:center;
 		margin-left:20px;
 		font-size:30px;
+	}
+	.pm_wrapper {
+		padding: 0px;
+		margin-top:50px;
+		text-align:center;
 	}
 </style>
 <head>
@@ -89,6 +94,9 @@
 </head>
 
 <body>
+<div class="pm_wrapper">
+    <img src="a00_com/img/PM.png" width="150">
+</div>
   <h1 class="page_title">참가할 프로젝트 선택</h1>
 <div class="prjSel">
     프로젝트 선택<select name='projects' class="prjSel selOpt">
@@ -98,7 +106,7 @@
          <script>var pno = ${pj.pno}</script>
       </c:forEach>
       <option value="new">새 프로젝트</option>
-
+	</select>
       <input type="button" class="prjSel selBtn" onclick="chooseProject()" value="선택">
 </div>
 </body>

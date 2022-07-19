@@ -18,7 +18,7 @@
 	}
 	.page_title{
 		text-align:center;
-		margin-top:150px;
+		margin-top:20px;
 		margin-bottom:50px;
 		color:rgb(22,160,133);
 		font-size:60px;
@@ -58,6 +58,11 @@
 	.crt:hover{
 		background-color:#4CAF50;
 	}
+	.pm_wrapper {
+		padding: 0px;
+		margin-top:50px;
+		text-align:center;
+	}
 </style>
 <head>
 <meta charset="UTF-8">
@@ -92,6 +97,9 @@
 </head>
 
 <body>
+<div class="pm_wrapper">
+    <img src="a00_com/img/PM.png" width="150">
+</div>
   <h1 class="page_title">새 프로젝트 생성/선택</h1>
 <div class="joinPrj">
     프로젝트 코드 입력 <input type="text" class="joinPrj code" name="code" placeholder="전달받은 코드를 입력해주세요.">

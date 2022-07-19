@@ -161,7 +161,7 @@ td {
     <li><a href="${path}/getAlert.do" class="icon"><img src="a00_com/img/alarm.png" width=25px> 알림</a></li>
     <li><a href="${path}/noticeList.do" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
     
-    <div style="padding-top:100px;">
+    <div style="padding-top:100%;">
     <li><a href="#" class="icon" ><img src="a00_com/img/add.png" width=25px> 팀원관리</a></li>
     <li><a href="${path}/mypage2.do" class="icon" ><img src="a00_com/img/mypage.png" width=25px> 마이페이지</a></li>
     <li><a href="${path}/logout.do" class="icon" >로그아웃</a></li>
