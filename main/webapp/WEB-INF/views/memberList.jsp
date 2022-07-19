@@ -226,26 +226,6 @@ function main(){
 	location.href="${path}/Main.do?pno="+pno
 }
 </script>
-<!-- <div class="jumbotron text-center">
-  <h2 data-toggle="modal" data-target="#exampleModalCenter">팀원 관리</h2>
-
-</div> -->
-<%-- <div class="container">
-   <table class="memberTable">
-   	<%int i=0; %>
-  	  <tr>
-  	  	<col width="30%"><col width="30%"><col width="30%"><col width="10%">
-     	<th>No.</th><th>팀원명</th><th>권한</th><th></th></tr>
-  	   <c:forEach var="m" items="${mlist}">
-      	   <tr><td><%=++i %></td><td>${m.name}</td><td>${m.auth}</td>
-      	   <%if(i!=1){ %>
-      	   	<td><input type="button" onclick="deleteProc(${m.userno}, ${m.pno}, '${m.name}')" value="삭제"></td>
-      	   <%} %>
-      	   </tr>
-      </c:forEach>
-   </table>
-    
-</div>--%>
 <script>
 var del = "${del}"
 function deleteProc(userno, pno, name){

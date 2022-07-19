@@ -18,9 +18,9 @@ public class MemberController {
 	MemberService service;
 	
 	// 멤버 조회
-	// http://localhost:8080/Team5/getMemberList.do
+	// http://localhost:8080/Team5/getMemberList.do?pno=2
 	@RequestMapping("getMemberList.do")
-	public String getMemberList(@RequestParam(value="pno", defaultValue="2") int pno, Model d){
+	public String getMemberList(@RequestParam("pno") int pno, Model d){
 		d.addAttribute("mlist", service.getMemberList(pno));
 		return "WEB-INF/views/memberList.jsp";
 	}

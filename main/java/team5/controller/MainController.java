@@ -29,8 +29,9 @@ public class MainController {
 	// http://localhost:7080/team5/Main.do
 	// http://220.73.54.156:8080/Team5/Main.do
 	@RequestMapping("Main.do")
-	public String Main(HttpSession session, @RequestParam(value = "pno", defaultValue = "2") int pno, Model d){
+	public String Main(HttpSession session, @RequestParam("pno") int pno, Model d){
 		d.addAttribute("slist", service.getScheduleList(pno));
+		session.setAttribute("pno", pno);
 		// 권한 설정 (session)
 //		session.setAttribute("auth", serviceM.getAuth(new Member((int)session.getAttribute("userNo"), pno)));
 		session.setAttribute("auth", "CREATOR");

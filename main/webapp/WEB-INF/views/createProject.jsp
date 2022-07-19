@@ -150,7 +150,7 @@
 var isCreate = "${isCreate}"
 if(isCreate=="Y"){
    var pno = "${pno}"
-   location.href="${path}/Project1.do"
+   location.href="${path}/Insert.do?pno="+pno
 }
 function createProject(){
    if(confirm("등록하시겠습니까?")){

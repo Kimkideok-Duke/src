@@ -86,8 +86,7 @@
 			location.href="${path}/joinProjectPage.do";
 		}
 		else{
-			sessionStorage.setItem("pno", pno );
-			location.href="${path}/Main.do?pno="+pno;
+			location.href="${path}/Main.do?pno="+prj.value;
 		}
 	}
 </script>
@@ -102,8 +101,7 @@
     프로젝트 선택<select name='projects' class="prjSel selOpt">
       <option value='sel' selected>-- 선택 --</option>
  	   <c:forEach var="pj" items="${plist}">
-         <option value="${pj.title}">${pj.title}</option>
-         <script>var pno = ${pj.pno}</script>
+         <option value="${pj.pno}">${pj.title}</option>
       </c:forEach>
       <option value="new">새 프로젝트</option>
 	</select>
