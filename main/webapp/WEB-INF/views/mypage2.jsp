@@ -331,7 +331,7 @@ td {
     <li><a href="#" class="icon"><img src="a00_com/img/alarm.png" width=25px> 알림</a></li>
     <li><a href="#" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
     
-    <div style="padding-top:100px;">
+    <div style="padding-top:100%;">
     <li><a href="#" class="icon" ><img src="a00_com/img/add.png" width=25px> 팀원추가</a></li>
     <li><a href="${path}/mypage2.do" class="icon" ><img src="a00_com/img/mypage.png" width=25px> 마이페이지</a></li>
     <li><a href="${path}/logout.do" class="icon" >로그아웃</a></li>
@@ -394,7 +394,6 @@ td {
 				</tbody>
 			</table>
 		</div>
-		<button type="button" id="logout_btn">로그아웃</button>
 		
 	</div>
 		</c>
@@ -413,7 +412,7 @@ function main(){
 var loginCheck = "<%=session.getAttribute("userId")%>";
 if(loginCheck=="null" || loginCheck=="" || loginCheck==null || loginCheck == undefined || 
 		( loginCheck != null && typeof loginCheck == "object" && !loginCheck.keys(loginCheck).length )){
-	alert("로그인 정보가 없습니다.\n로그인페이지로 이동합니다.");
+	alert("로그아웃 되었습니다.\n로그인페이지로 이동합니다.");
 	location.href="${path}/login.do";
 }
 var proc4 = "${proc4}";
