@@ -33,8 +33,8 @@ public class MainController {
 		d.addAttribute("slist", service.getScheduleList(pno));
 		session.setAttribute("pno", pno);
 		// 권한 설정 (session)
-//		session.setAttribute("auth", serviceM.getAuth(new Member((int)session.getAttribute("userNo"), pno)));
-		session.setAttribute("auth", "CREATOR");
+		session.setAttribute("auth", serviceM.getAuth(new Member((int)session.getAttribute("userNo"), pno)));
+//		session.setAttribute("auth", "CREATOR");
 		return "WEB-INF\\views\\Main.jsp";
 	}
 
