@@ -64,12 +64,16 @@
 	<h3>공지사항 어쩌구저쩌구</h3>
 	
 	<table id="scheTable">
-		<tr><th>아이템</th><th>인원</th><th>진행도</th><th>마감일</th><th>댓글</th></tr>
+		<tr><th>아이템</th><th>인원</th><th>진행도</th><th>마감일</th><th>댓글</th><th>활동로그</th></tr>
 		<c:forEach var="schedule" items="${slist}">
 		<tr ondblclick="goDetail(${schedule.itemno})"><td>${schedule.item}</td>
 		<td><img src="${path}/a00_com/member.jpg" height="30" width="30"/></td><td>${schedule.progress}</td>
-		<td>${schedule.deadline}</td><td>${schedule.comm}</td></tr>
-		</c:forEach>
+		<td>인원..</td><td>${schedule.progress}</td>
+		<td>${schedule.deadline}</td><td>${schedule.comm}</td>
+		<td onclick="goLog('${schedule.item}','${schedule.progress}','${schedule.deadline}','${schedule.comm}')">
+		<img src="${path}/a00_com/img/log.png" height="25" width="25">
+		</tr>
+        </c:forEach>
 	</table>
 	
 	<form method="get">
@@ -81,4 +85,22 @@
 </script>
 
 </body>
+
+<script type="text/javascript">
+   $(document).ready(function(){
+      
+   });
+   
+   function goDetail(itemno){
+		location.href="${path}/ScheduleDetail.do?itemno="+itemno;
+	}
+   function goInsert(){
+		location.href="${path}/Insert.do";
+	}
+   function goLog(item,progress,deadline,comm){
+	   location.href="${path}/Log.do?item="+item+"&progress="+progress
+			   +"&deadline="+deadline+"&comm="+comm;
+   }
+</script>
+
 </html>
