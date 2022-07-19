@@ -92,6 +92,21 @@
 		display:block;
 		margin-top:50px;
 	}
+	#withdraw_btn{
+		border-radius: 5px;
+		background-color:#9ad756;
+		color:white;
+		border: none;
+		cursor:pointer;
+		height:30px;
+		margin-left:10px;
+		float:right;
+		margin-right: 15%;
+		margin-top:20px;
+	}
+	#withdraw_btn:hover{
+		background-color:#8ec451;
+	}
 </style>
 <script src="${path}/a00_com/jquery.min.js"></script>
 <script src="${path}/a00_com/popper.min.js"></script>
@@ -194,6 +209,7 @@
 				<tr><th>이메일</th><td><span id="user_email"></span></td></tr>
 			</table>
 		</div>
+		<button type="button" id="withdraw_btn">회원탈퇴</button>
 	</form>
 		<div>
 			<h2 class="sub_title">내가 생성한 프로젝트</h2>
@@ -217,7 +233,7 @@
 			</table>
 		</div>
 		<button type="button" id="logout_btn">로그아웃</button>
-		<button type="button" id="withdraw_btn">회원탈퇴</button>
+		
 	</div>
 
 <script type="text/javascript">
