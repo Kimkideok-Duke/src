@@ -31,8 +31,8 @@ public class MainController {
 	@RequestMapping("Main.do")
 	public String Main(HttpSession session, @RequestParam("pno") int pno, Model d){
 		d.addAttribute("slist", service.getScheduleList(pno));
-		// 권한 설정
-		d.addAttribute("auth", serviceM.getAuth(new Member((int)session.getAttribute("userNo"), pno)));
+		// 권한 설정 (session)
+		session.setAttribute("auth", serviceM.getAuth(new Member((int)session.getAttribute("userNo"), pno)));
 		return "WEB-INF\\views\\Main.jsp";
 	}
 
