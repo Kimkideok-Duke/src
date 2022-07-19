@@ -150,10 +150,10 @@ c.content {
       --%>   
    });
 	function goMain(){
-		location.href="${path}/Main.do?pno="+pno;
+		location.href="${path}/Main.do?pno="+${pno};
 	}
-   function insertProc(pno){
-	   	$("form").attr("action","${path}/insertSchedule.do?pno="+pno);
+   function insertProc(){
+	   	$("form").attr("action","${path}/insertSchedule.do");
 		$("form").submit();
 	}
 
@@ -218,7 +218,7 @@ c.content {
 var isInsert = "${isInsert}";
 if(isInsert=="Y"){
 	alert("등록성공!\n메인화면으로 이동합니다");
-	location.href="${path}/Main.do?pno="${pno};
+	location.href="${path}/Main.do?pno="+${pno};
 }
 </script>     
 
