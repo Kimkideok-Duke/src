@@ -129,7 +129,11 @@ c.content {
 }
 
 .inputs{
-	
+	border-style: solid;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 }
 </style>
 <script src="${path}/a00_com/jquery.min.js"></script>

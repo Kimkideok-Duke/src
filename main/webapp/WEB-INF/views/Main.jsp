@@ -144,6 +144,22 @@ td {
   border-bottom: 2px solid #cccccc;
   height: 70px;
 }
+
+h2 {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.btn {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	border-radius: 12px;
+	transition-duration: 0.4s;
+	
+}
 </style>
 <script src="${path}/a00_com/jquery.min.js"></script>
 <script src="${path}/a00_com/popper.min.js"></script>
@@ -167,13 +183,11 @@ td {
    function goInsert(pno){
 		location.href="${path}/Insert.do?pno="+pno;
 	}
-   function goNotice(pno){
-		location.href="${path}/noticeList.do?pno="+pno;
-	}
 </script>
 </head>
 
 <body>
+
 <section id="container">
     <div style="width: 100%; flex-grow: 1; position: relative;">
 <div class="menu" style="height: 120%;">
@@ -198,7 +212,7 @@ td {
         top: 0;
         right: 0;
         bottom: 0;
-        height: 150%;
+        height: 160%;
         left: 190px;
         overflow: hidden;
        /* justify-content: center;*/
@@ -206,10 +220,14 @@ td {
         display: flex;
         flex-direction: column;
         border-radius: 20px 0px 0px 0px;">
-        
-	<h2>${slist.get(0).pno}번 프로젝트</h2>
-	<div><button type="button" onclick="goNotice(${slist.get(0).pno})">공지사항</button></div>
-	
+  <div>
+        <h2>${slist.get(0).pno}번 프로젝트</h2>
+    <div class="btn">
+		<form method="post">
+			<button type="button" onclick="goInsert(${slist.get(0).pno})">등록페이지</button>
+		</form>
+	</div>
+  </div>
 	<table id="scheTable">
 		<tr><th>아이템</th><th>인원</th><th>진행도</th><th>마감일</th><th>댓글</th><th>활동로그</th></tr>
 		<c:forEach var="schedule" items="${slist}">
@@ -222,11 +240,7 @@ td {
         </c:forEach>
 	</table>
 	
-	<form method="post">
-		<button type="button" onclick="goInsert(${slist.get(0).pno})">등록페이지</button>
-	</form>
-	
-     </div>
+		
   </div>
 </section>
 <script type="text/javascript">
