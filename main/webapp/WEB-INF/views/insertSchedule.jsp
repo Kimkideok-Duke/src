@@ -134,6 +134,16 @@ c.content {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+	width: 300px;
+	
+	.input{
+		width:100%;
+	}
+}
+.btn {
+	border-radius: 12px;
+	transition-duration: 0.4s;
+	
 }
 </style>
 <script src="${path}/a00_com/jquery.min.js"></script>
@@ -195,19 +205,19 @@ c.content {
         border-radius: 20px 0px 0px 0px;">
 <div class="inputs">        
 <form method="post">
-	<div>프로젝트 번호<input name="pno" value="${pno}"/></div>
-	<div>아이템 <input name="item" value="플로우차트"/></div>
-	<div>진행도 <select name="progress">
+	<div class="input"><div>프로젝트 번호</div><input name="pno" value="${pno}"/></div>
+	<div class="input"><div>아이템</div><input name="item" value="플로우차트"/></div>
+	<div class="input"><div>진행도</div><select name="progress">
 		<option value="기본" selected>기본</option>
 		<option value="진행중">진행중</option>
 		<option value="막힘">막힘</option>
 		<option value="완료">완료</option>
 		</select></div>
-	<div>마감일 <input type="date" name="deadline_s" value="2022-07-01"/></div>
-	<div>댓글 <input name="comm" value="코멘트123"/></div>
-	<div><input type="hidden" name="auth" value="CREATOR"/></div>
-	<div><button type="button" onclick="insertProc()">등록</button></div>
-	<div><button type="button" onclick="goMain()">메인화면</button></div>
+	<div class="input"><div>마감일</div><input type="date" name="deadline_s" value="2022-07-01"/></div>
+	<div class="input"><div>댓글</div><input name="comm" value="코멘트123"/></div>
+	<input type="hidden" name="auth" value="CREATOR"/>
+	<div class="btn"><button type="button" onclick="insertProc()">등록</button></div>
+	<div class="btn"><button type="button" onclick="goMain()">메인화면</button></div>
 </form>
 </div>
      </div>
