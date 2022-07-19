@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="team5.dao.LogDao">
+
+<!-- 로그 등록 -->
+<insert id="insertLog"  parameterType="log">
+insert into log
+values 
+((SELECT NVL(MAX(logno), 0) + 1 FROM log),#{itemno}, 
+#{pno} , #{userno} , #{logDate},#{category})
+</insert>	
+
+<!-- 일정 아이템명 추출 -->
+<select id="logList" parameterType="schedule" resultType="log">
+select * 
+from schedule 
+WHERE item = #{item}
+</select>
+
+
+<!-- 일정/로그  -->
+<select id="DetailLog" parameterType="int" resultType="log">
+SELECT l.*,s.item,s.progress,s.deadline,comm
+FROM log l,SCHEDULE s
+WHERE l.itemno = s.ITEMNO(+)
+AND l.itemno =#{itemno};
+</select>
+
+
+
+</mapper>
