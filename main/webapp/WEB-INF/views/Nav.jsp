@@ -156,14 +156,14 @@ td {
     <div style="width: 100%; flex-grow: 1; position: relative;">
 <div class="menu">
     <ul>
-    <div class="pm_wrapper" onclick="main()"><img src="img/PM.png" width=140px></div>
-    <li><a href="#" class="icon"><img src="img/schedule.png" width=25px> 일정관리</a></li>
-    <li><a href="#" class="icon"><img src="img/alarm.png" width=25px> 알림</a></li>
-    <li><a href="#" class="icon"><img src="img/schedule.png" width=25px> 공지사항</a></li>
+    <div class="pm_wrapper" onclick="main()"><img src="a00_com/img/PM.png" width=140px></div>
+    <li><a href="#" class="icon"><img src="a00_com/img/schedule.png" width=25px> 일정관리</a></li>
+    <li><a href="#" class="icon"><img src="a00_com/img/alarm.png" width=25px> 알림</a></li>
+    <li><a href="#" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
     
     <div style="padding-top:430px;">
-    <li><a href="#" class="icon" ><img src="img/add.png" width=25px> 팀원추가</a></li>
-    <li><a href="#" class="icon" ><img src="img/mypage.png" width=25px> 마이페이지</a></li>
+    <li><a href="#" class="icon" ><img src="a00_com/img/add.png" width=25px> 팀원추가</a></li>
+    <li><a href="#" class="icon" ><img src="a00_com/img/mypage.png" width=25px> 마이페이지</a></li>
     </div>
     </ul>
 </div>

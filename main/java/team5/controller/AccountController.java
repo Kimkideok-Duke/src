@@ -163,12 +163,18 @@ public class AccountController {
 		return "pageJsonReport";
 	}
 	// 인증번호 발송
-	// http://localhost:7080/board/sendCorNum.do
+	// http://localhost:7080/Team5/sendCorNum.do
 	@RequestMapping("sendCorNum.do")
 	public String sendCorNum(@RequestParam("inputEmail") String inputEmail, Model d) {
 		int corNum = (int)(Math.random()*900000+100000);
 		service.sendMail(corNum, inputEmail);
 		d.addAttribute("corNum", corNum);
 		return "pageJsonReport";
+	}
+	// 네비게이션 바
+	// http://localhost:7080/Team5/myNav.do
+	@RequestMapping("myNav.do")
+	public String myNav() {
+		return "WEB-INF\\views\\Nav.jsp";
 	}
 }
