@@ -38,7 +38,7 @@ table.type09 thead th {
   color: #464d48;
   border-bottom: 3px solid #8fbd9b;
 }
-table.type09 tbody th {
+table.type09 tbody td {
   width: 150px;
   padding: 10px;
   font-weight: bold;
@@ -210,9 +210,10 @@ td {
 		location.href="${path}/noticeDetail.do?noticeno="+noticeno;
 	}
 	function goWrite(){
-		location.href="${path}/noticeGoWrite.do";
+		location.href="${path}/noticeGoWrite.do?pno="+${param.pno };
 	}
-
+	
+<%--var pnosession = '<%=String.valueOf(session.getAttribute("pno"))%>'--%>
 </script>
 <body>
   <section id="container">
@@ -224,7 +225,7 @@ td {
     <li><a href="#" class="icon"><img src="a00_com/img/alarm.png" width=25px> 알림</a></li>
     <li><a href="#" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
     
-    <div style="padding-top:430px;">
+    <div style="padding-top:100%;">
     <li><a href="#" class="icon" ><img src="a00_com/img/add.png" width=25px> 팀원추가</a></li>
     <li><a href="#" class="icon" ><img src="a00_com/img/mypage.png" width=25px> 마이페이지</a></li>
     </div>
@@ -247,12 +248,14 @@ td {
         display: flex;
         flex-direction: column;
         border-radius: 20px 0px 0px 0px;">
+        <b class="title">공지사항</b>
+        <c class="content">
 	<div class="out">
-		<h1>공지사항</h1>
 		<div class="my-box">
 		<form action="${path}/noticeList.do">
 			<input name="title" placeholder="제목" value="${notice.title}">
 			<input type="submit" value="검색" class="button">
+			<input type="hidden" name="pno" value="${param.pno }"/>
 		</form>
 			
 				<table class="type09">
@@ -271,7 +274,7 @@ td {
 				<input type="button" value="글등록" onclick="goWrite()" class="button" style="margin:5px 0 0 0;">
 			</div>
 		</div>		
-       
+       </c>
       </div>
     </div>
   </section>

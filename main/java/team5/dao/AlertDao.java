@@ -7,5 +7,5 @@ import team5.vo.Alert;
 
 @Repository
 public interface AlertDao {
-	public Alert progressAlert(Alert alt);
+	public Alert getAlert(Alert alt);
 }

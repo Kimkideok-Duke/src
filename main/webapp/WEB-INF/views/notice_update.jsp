@@ -217,11 +217,13 @@ td {
 
 </head>
 <script>
+var pnosession = '<%=(String)session.getAttribute("pno")%>';
+var authsession = '<%=(String)session.getAttribute("auth")%>';
+
 	function goupdate(){
 			if(confirm("수정하시겠습니까?")){
 				var titleVal = $("[name=title]").val();
 				var contentVal = $("[name=content]").val();
-				// 수정된 내용이 없으면 수정불가 유효성 검사
 				$("form").attr("action","${path}/noticeUpdate.do");
 				$("form").submit();
 			}
@@ -229,7 +231,7 @@ td {
 	var upt = "${upt}"
 	if(upt=="Y"){
 		if(confirm("수정성공!\n조회리스트화면으로 이동하시겠습니까?")){
-			location.href="${path}/noticeList.do";
+			location.href="${path}/noticeList.do?pno="+${notice.pno };
 		}
 	}
 </script>
@@ -243,7 +245,7 @@ td {
     <li><a href="#" class="icon"><img src="a00_com/img/alarm.png" width=25px> 알림</a></li>
     <li><a href="#" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
     
-    <div style="padding-top:430px;">
+    <div style="padding-top:100%;">
     <li><a href="#" class="icon" ><img src="a00_com/img/add.png" width=25px> 팀원추가</a></li>
     <li><a href="#" class="icon" ><img src="a00_com/img/mypage.png" width=25px> 마이페이지</a></li>
     </div>
@@ -267,17 +269,20 @@ td {
         flex-direction: column;
         border-radius: 20px 0px 0px 0px;">
 
-		<div class="out">
-			<h1>공지사항 수정</h1>
+        <b class="title">공지사항 수정</b>
+        <c class="content">
+        <div class="out">
 				<form>
 					<div class="my-box">
 					<p><input type="hidden" name="noticeno" value="${notice.noticeno}">
 					<p class="psty">제목 </p><textarea cols="80" rows="1" name="title">${notice.title}</textarea>
 					<p class="psty">내용 </p><textarea cols="80" rows="15" name="content">${notice.content}</textarea>
 					<input type="button" value="수정완료" onclick="goupdate()" class="button">
+					<input type="hidden" name="pno" value="${notice.pno }"/>
 					</div>
 				</form>
-		</div>	
+		</div>
+		</c>	
       </div>
     </div>
   </section>

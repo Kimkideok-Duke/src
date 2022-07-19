@@ -3,12 +3,12 @@
    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team05.dao.AlertDao">
-	<select id="progressAlert" resultType="alert" parameterType="alert">
-		SELECT m.userno, prj.TITLE, s.item, s.progress
+	<select id="getAlert" resultType="alert" parameterType="alert">
+		SELECT m.userno, prj.TITLE, s.item, s.progress, TO_DATE(sysdate)-TO_DATE(TO_CHAR(DEADLINE, 'YYYYMMDD')) dday
 		FROM schedule s, participate p, project prj, MEMBER m
 		WHERE prj.pno = s.pno AND s.itemno = p.itemno AND m.pno = prj.pno
 		AND m.userno = #{userno}
 		AND m.pno = #{pno}
-		AND PROGRESS = #{progress}
+		AND (s.progress = #{progress} OR sysdate between s.DEADLINE and TO_CHAR(SYSDATE + 3 ,'yyyy/mm/dd'))
 	</select>
 </mapper>

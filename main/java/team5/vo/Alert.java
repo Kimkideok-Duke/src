@@ -7,6 +7,7 @@ public class Alert {
 	private String title;
 	private String item;
 	private String progress;
+	private int dday;
 	public Alert() {
 		// TODO Auto-generated constructor stub
 	}
@@ -53,6 +54,12 @@ public class Alert {
 	}
 	public void setProgress(String progress) {
 		this.progress = progress;
+	}
+	public int getDday() {
+		return dday;
+	}
+	public void setDday(int dday) {
+		this.dday = dday;
 	}
 	
 	

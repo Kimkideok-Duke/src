@@ -44,4 +44,5 @@
 			from notice
 			where noticeno = #{noticeno}
 	</delete>
+
 </mapper>

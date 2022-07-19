@@ -217,8 +217,6 @@ td {
 </style>
 
 </head>
-<%=session.getAttribute("userId")%>
-<%=session.getAttribute("pno")%>
 <body>
   <section id="container">
     <div style="width: 100%; flex-grow: 1; position: relative;">
@@ -229,7 +227,7 @@ td {
     <li><a href="#" class="icon"><img src="a00_com/img/alarm.png" width=25px> 알림</a></li>
     <li><a href="#" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
     
-    <div style="padding-top:430px;">
+    <div style="padding-top:100%;">
     <li><a href="#" class="icon" ><img src="a00_com/img/add.png" width=25px> 팀원추가</a></li>
     <li><a href="#" class="icon" ><img src="a00_com/img/mypage.png" width=25px> 마이페이지</a></li>
     </div>
@@ -253,25 +251,28 @@ td {
         flex-direction: column;
         border-radius: 20px 0px 0px 0px;">
 
-<div class="out">
-	<h1>공지사항 작성</h1>
-		<form action="${path}/noticeInsert.do" >
-			<div class="my-box">
-				<p class=".psty">제목 </p><textarea cols="80" rows="1" name="title" placeholder="제목을 입력하세요."></textarea>
-				<p class=".psty">내용 </p><textarea cols="80" rows="15" name="content" placeholder="내용을 입력하세요."></textarea>
-				<input type="button" value="등록" onclick="goInsert()" class="button">
-				<input type="button" value="리스트" onclick="gomain()" class="button">\
-			</div>
-		</form>
-</div>	
-<script>
-var isInsert = "${isInsert}"
-	if(isInsert=="Y"){
-		if(!confirm("등록성공했습니다\n계속등록하시겠습니까?")){
-			location.href="${path}/noticeList.do";
+	   <b class="title">공지사항 작성</b>
+        <c class="content">
+			<div class="out">
+				<form action="${path}/noticeInsert.do" >
+					<div class="my-box">
+						<p class=".psty">제목 </p><textarea cols="80" rows="1" name="title" placeholder="제목을 입력하세요."></textarea>
+						<p class=".psty">내용 </p><textarea cols="80" rows="10" name="content" placeholder="내용을 입력하세요."></textarea>
+						<input type="button" value="등록" onclick="goInsert()" class="button">
+						<input type="button" value="리스트" onclick="gomain()" class="button">
+					</div>
+				</form>
+			</div>	
+	<script>
+	var authsession = sessionStorage.getItem("auth");
+	var pnosession = sessionStorage.getItem("pno");
+	var isInsert = "${isInsert}"
+		if(isInsert=="Y"){
+			if(!confirm("등록성공했습니다\n계속등록하시겠습니까?")){
+				location.href="${path}/noticeList.do?pno="+${param.pno };
+			}
 		}
-	}
-function goInsert(){
+	function goInsert(){
 		if(confirm("등록하시겠습니까?")){
 			var titleVal = $("[name=title]").val();		
 			if(titleVal == ""){
@@ -286,16 +287,16 @@ function goInsert(){
 				return;
 			}	
 		document.querySelector("form").submit();
-}
-function gomain(){
-	location.href="${path}/noticeList.do";
-}
-</script>
+		}
+	}
+	function gomain(){
+		location.href="${path}/noticeList.do?pno="+${param.pno };
+	}
+	</script>
+		</c>
       </div>
     </div>
   </section>
-
-
 </body>
 <script type="text/javascript">
 function main(){

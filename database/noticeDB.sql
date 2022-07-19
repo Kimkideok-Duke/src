@@ -51,19 +51,21 @@ SELECT * FROM SCHEDULE;
 
 SELECT * FROM PROJECT;
 
-SELECT m.userno, prj.TITLE, s.item, s.progress
+SELECT m.userno, prj.TITLE, s.item, s.progress, TO_DATE(TO_CHAR(DEADLINE, 'YYYYMMDD')) - TO_DATE(sysdate) 남은날짜
 FROM schedule s, participate p, project prj, MEMBER m
 WHERE prj.pno = s.pno AND s.itemno = p.itemno AND m.pno = prj.pno
 AND m.userno = #{userno}
 AND m.pno = #{pno}
-AND PROGRESS = #{progress};
+AND PROGRESS = #{progress}
+OR sysdate between s.DEADLINE and TO_CHAR(SYSDATE + 3 ,'yyyy/mm/dd'));
 
-SELECT m.userno, prj.TITLE, s.item, s.progress
+SELECT m.userno, prj.TITLE, s.item, s.progress,
+TO_DATE(TO_CHAR(DEADLINE, 'YYYYMMDD')) - TO_DATE(sysdate) 남은날짜
 FROM schedule s, participate p, project prj, MEMBER m
 WHERE prj.pno = s.pno AND s.itemno = p.itemno AND m.pno = prj.pno
-AND m.userno = 10001
-AND m.pno = 2
-AND sysdate between s.DEADLINE and DATE_ADD(s.DEADLINE, INTERVAL 3 DAY);
+AND m.userno = #{userno}
+AND m.pno = #{pno}
+AND sysdate between s.DEADLINE and TO_CHAR(SYSDATE + 3 ,'yyyy/mm/dd');
 
 SELECT * FROM MEMBER;
 SELECT n.pno, n.NOTICENO, m.userno m.AUTH 

@@ -10,8 +10,7 @@ import team5.vo.Alert;
 public class AlertService {
 	@Autowired(required=false)
 	private AlertDao dao;
-	public Alert progressAlert(Alert alt) {
-		dao.progressAlert(alt);
-		return dao.progressAlert(alt);
+	public Alert getAlert(Alert alt) {
+		return dao.getAlert(alt);
 	}
 }

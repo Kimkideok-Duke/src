@@ -29,7 +29,7 @@ table.type09 {
   border-collapse: collapse;
   text-align: left;
   line-height: 1.5;
-  width: 600px;
+  width: 700px;
   margin: auto;
 
 }
@@ -72,7 +72,7 @@ table.type09 td {
 .my-box { 
 	padding:50px; 
 	margin:auto;
-	width: 700px;
+	width: 800px;
 }
 form{
 	float: right;
@@ -222,18 +222,29 @@ td {
 </script>
 </head>
 <script type="text/javascript">
+var pnosession = sessionStorage.getItem("pno");
+var authsession = sessionStorage.getItem("auth");
+
 	function goupt(noticeno){
-		if(confirm("수정화면으로 이동하시겠습니까?")){
-			location.href="${path}/noticeGoUpdate.do?noticeno="+noticeno;
-		}
+		if(authsession=="HOST"){
+			if(confirm("수정화면으로 이동하시겠습니까?")){
+				location.href="${path}/noticeGoUpdate.do?noticeno="+noticeno;
+			}
+		}else{
+			alert("호스트만 수정가능합니다.");
+		}	
 	}
 	function godel(noticeno){
-		if(confirm("삭제하시겠습니까?")){
-			location.href="${path}/noticeDelete.do?noticeno="+noticeno;
-		}
+		if(authsession =="HOST"){
+			if(confirm("삭제하시겠습니까?")){
+				location.href="${path}/noticeDelete.do?noticeno="+noticeno;
+			}
+		}else{
+			alert("호스트만 삭제가능합니다.");
+		}	
 	}
 	function gomain(){
-		location.href="${path}/noticeList.do";
+		location.href="${path}/noticeList.do?pno="+${notice.pno};
 	}
 	
 	var proc = "${proc}"
@@ -241,7 +252,6 @@ td {
 		alert("삭제성공\n조회 리스트화면으로 이동!")
 		location.href="${path}/noticeList.do";
 	}	
-
 </script>
 <body>
   <section id="container">
@@ -251,9 +261,9 @@ td {
     <div class="pm_wrapper" onclick="main()"><img src="a00_com/img/PM.png" width=140px></div>
     <li><a href="#" class="icon"><img src="a00_com/img/schedule.png" width=25px> 일정관리</a></li>
     <li><a href="#" class="icon"><img src="a00_com/img/alarm.png" width=25px> 알림</a></li>
-    <li><a href="#" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
+    <li><a href="${path}/noticeList.do?pno="+"${notice.pno }" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
     
-    <div style="padding-top:430px;">
+    <div style="padding-top:100%;">
     <li><a href="#" class="icon" ><img src="a00_com/img/add.png" width=25px> 팀원추가</a></li>
     <li><a href="#" class="icon" ><img src="a00_com/img/mypage.png" width=25px> 마이페이지</a></li>
     </div>
@@ -277,12 +287,13 @@ td {
         flex-direction: column;
         border-radius: 20px 0px 0px 0px;">
 
-		<div class="out">
-		<h1>공지사항</h1>
+	<b class="title">공지사항</b>
+        <c class="content">
+        <div class="out">
 			<div class="my-box">
 				<table class="type09">
 					<thead>
-						<tr><th>공지번호 | ${notice.noticeno}</th><th>제목 | ${notice.title}</th><th>작성일자 | <fmt:formatDate value="${notice.creatdate}"/></th></tr>
+						<tr><th width="50">공지번호<br> | ${notice.noticeno}</th><th width="230">제목<br>| ${notice.title}</th><th width="70">작성일자<br> | <fmt:formatDate value="${notice.creatdate}"/></th></tr>
 					</thead>
 					<tbody>
 						<tr><td colspan='3'>${notice.content}</td></tr>
@@ -292,9 +303,10 @@ td {
 				<input type="button" value="수정" onclick="goupt(${notice.noticeno})" class="button">
 				<input type="button" value="삭제" onclick="godel(${notice.noticeno})" class="button">
 				<input type="button" value="리스트" onclick="gomain()" class="button">
+				<input type="hidden" name="pno" value="${notice.pno }"/>
 			</div>
 		</div>	
-        
+        </c>
       </div>
     </div>
   </section>

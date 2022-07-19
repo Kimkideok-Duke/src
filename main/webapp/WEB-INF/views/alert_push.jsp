@@ -100,10 +100,10 @@ tr:hover{
 			<tbody>
 			<!--(프로젝트명) 프로젝트의 (아이템명) 진행상태가 (진행상태)로 변경되었습니다.-->
 			<tr><td>${alert.title}+" 프로젝트의"+${alert.item}+ " 진행상태가"+${alert.progress}+"로 변경되었습니다."</td></tr>
-
+			<!--(프로젝트명) 프로젝트의 (아이템명) 마감 (몇)일전입니다.-->
+			<tr><td>${alert.title}+" 프로젝트의"+${alert.item}+ "은 마감"+${alert.dday}+"일전입니다."</td></tr>
 			</tbody>
 			</table>
-			<input type="button" value="알림삭제" class="button" style="margin:5px 0 0 0;">
 		</div>
 </body>
 </html>

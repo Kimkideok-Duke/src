@@ -12,11 +12,11 @@ import team5.vo.Alert;
 public class AlertController {
 	@Autowired(required=false)
 	public AlertService service;
-	//http://localhost:7080/Team05/progressAlert.do
-	@RequestMapping("progressAlert.do")
-	public String progressAlert(Alert alt, Model m) {
+	//http://localhost:7080/Team05/getAlert.do
+	@RequestMapping("getAlert.do")
+	public String getAlert(Alert alt, Model m) {
 		alt = new Alert(10001, 2, "완료");
-		m.addAttribute("alert", service.progressAlert(alt));
+		m.addAttribute("alert", service.getAlert(alt));
 		return "WEB-INF\\views\\alert_push.jsp";
 	}
 }
