@@ -49,10 +49,15 @@
 	<input name="pno" value="${schedule.pno }"/>
 	아이템 <input name="item" value="${schedule.item }"/>
 	인원 
-	진행도 <input name="progress" value="${schedule.progress }"/>
-	마감일 <input name="deadline" value="${schedule.deadline}" /> 
+	진행도 <select name="progress">
+		<option value="기본" selected>기본</option>
+		<option value="진행중">진행중</option>
+		<option value="막힘">막힘</option>
+		<option value="완료">완료</option>
+		</select>
+	마감일 <input type="date" name="deadline_s" value="${schedule.deadline}" /> 
 	댓글 <input name="comm" value="${schedule.comm }"/>
-	<input name="perm" value="${schedule.perm }"/>
+	<input name="auth" value="${schedule.auth }"/>
 	<button type="button" onclick="updateProc()">수정</button>
 	<button type="button" onclick="deleteProc()">삭제</button>
 	<button type="button" onclick="goMain()">메인화면</button>	

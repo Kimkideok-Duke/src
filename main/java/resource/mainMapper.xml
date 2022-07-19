@@ -18,8 +18,8 @@
 	<insert id="insertSchedule" parameterType="schedule">
 		INSERT INTO schedule
 		values(itemno_seq.nextval, #{pno}, #{item,jdbcType=VARCHAR},
-		#{progress,jdbcType=VARCHAR}, #{deadline,jdbcType=DATE},
-		#{comm,jdbcType=VARCHAR}, #{perm,jdbcType=VARCHAR})
+		#{progress,jdbcType=VARCHAR}, to_date(#{deadline_s,jdbcType=VARCHAR},'YYYY-MM-DD'),
+		#{comm,jdbcType=VARCHAR}, #{auth,jdbcType=VARCHAR})
 	</insert>
 	
 	<select id="getUserNoList" resultType="int" parameterType="int">
@@ -32,7 +32,7 @@
 	UPDATE schedule
 		SET item = #{item,jdbcType=VARCHAR},
 			progress = #{progress,jdbcType=VARCHAR},
-			deadline = #{deadline,jdbcType=DATE},
+			deadline = to_date(#{deadline_s,jdbcType=VARCHAR},'YYYY-MM-DD'),
 			comm = #{comm,jdbcType=VARCHAR}
 		WHERE itemno = #{itemno}
 	</update>

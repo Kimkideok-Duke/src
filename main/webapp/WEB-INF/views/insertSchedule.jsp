@@ -47,7 +47,7 @@
 
 <body>
 
-<form method="get">
+<form method="post">
 	프로젝트 번호<input name="pno" value="2"/>
 	아이템 <input name="item" value="플로우차트"/>
 	인원 
@@ -57,9 +57,9 @@
 		<option value="막힘">막힘</option>
 		<option value="완료">완료</option>
 		</select>
-	마감일 <input type="date" name="deadline" value="2022-07-01"/>
+	마감일 <input type="date" name="deadline_s" value="2022-07-01"/>
 	댓글 <input name="comm" value="코멘트123"/>
-	<input name="perm" value="전권한"/>
+	<input type="hidden" name="auth" value="CREATOR"/>
 	<button type="button" onclick="insertProc()">등록</button>
 	<button type="button" onclick="goMain()">메인화면</button>	
 </form>

@@ -1,13 +1,16 @@
 package team5.vo;
 
+import java.sql.Date;
+
 public class Schedule {
 	private int itemno;
 	private int pno;
 	private String item;
 	private String progress;
-	private String deadline;
+	private Date deadline;
+	private String deadline_s;
 	private String comm;
-	private String perm;
+	private String auth;
 	public Schedule() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -18,7 +21,7 @@ public class Schedule {
 		this.itemno = itemno;
 	}
 
-	public Schedule(int itemno, String item, String progress, String deadline, String comm) {
+	public Schedule(int itemno, String item, String progress, Date deadline, String comm) {
 		super();
 		this.itemno = itemno;
 		this.item = item;
@@ -27,17 +30,28 @@ public class Schedule {
 		this.comm = comm;
 	}
 
-	public Schedule(int pno, String item, String progress, String deadline, String comm, String perm) {
+	public Schedule(int itemno, int pno, String item, String progress, String deadline_s, String comm, String auth) {
+		super();
+		this.itemno = itemno;
+		this.pno = pno;
+		this.item = item;
+		this.progress = progress;
+		this.deadline_s = deadline_s;
+		this.comm = comm;
+		this.auth = auth;
+	}
+
+	public Schedule(int pno, String item, String progress, Date deadline, String comm, String auth) {
 		super();
 		this.pno = pno;
 		this.item = item;
 		this.progress = progress;
 		this.deadline = deadline;
 		this.comm = comm;
-		this.perm = perm;
+		this.auth = auth;
 	}
 
-	public Schedule(String item, String progress, String deadline, String comm) {
+	public Schedule(String item, String progress, Date deadline, String comm) {
 		super();
 		this.item = item;
 		this.progress = progress;
@@ -45,7 +59,7 @@ public class Schedule {
 		this.comm = comm;
 	}
 
-	public Schedule(int itemno, int pno, String item, String progress, String deadline, String comm, String perm) {
+	public Schedule(int itemno, int pno, String item, String progress, Date deadline, String comm, String auth) {
 		super();
 		this.itemno = itemno;
 		this.pno = pno;
@@ -53,7 +67,7 @@ public class Schedule {
 		this.progress = progress;
 		this.deadline = deadline;
 		this.comm = comm;
-		this.perm = perm;
+		this.auth = auth;
 	}
 	public int getItemno() {
 		return itemno;
@@ -79,10 +93,10 @@ public class Schedule {
 	public void setProgress(String progress) {
 		this.progress = progress;
 	}
-	public String getDeadline() {
+	public Date getDeadline() {
 		return deadline;
 	}
-	public void setDeadline(String deadline) {
+	public void setDeadline(Date deadline) {
 		this.deadline = deadline;
 	}
 	public String getComm() {
@@ -91,11 +105,19 @@ public class Schedule {
 	public void setComm(String comm) {
 		this.comm = comm;
 	}
-	public String getPerm() {
-		return perm;
+	public String getAuth() {
+		return auth;
 	}
-	public void setPerm(String perm) {
-		this.perm = perm;
+	public void setAuth(String auth) {
+		this.auth = auth;
+	}
+
+	public String getDeadline_s() {
+		return deadline_s;
+	}
+
+	public void setDeadline_s(String deadline_s) {
+		this.deadline_s = deadline_s;
 	}
 	
 	
