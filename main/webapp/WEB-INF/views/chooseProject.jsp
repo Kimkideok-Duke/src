@@ -12,6 +12,43 @@
 
  --%>
 <html>
+<style type="text/css">
+	body{
+		background-color:rgb(247,247,247);
+	}
+	.page_title{
+		text-align:center;
+		margin-top:150px;
+		margin-bottom:50px;
+		color:rgb(22,160,133);
+		font-size:60px;
+		font-weight:bold;
+	}
+    .prjSel{
+		width:70%;
+		height:auto;
+		margin-top:80px;
+		margin-left:350px;
+		font-size:40px;
+	}
+	.selBtn{
+		background-color:rgb(46, 204, 113);
+		margin-left:30px;
+		width:20%;
+		color:white;
+		border:none;
+		font-size:30px;
+	}
+	.selBtn:hover{
+		background-color:#4CAF50;
+	}
+	.selOpt{
+		width:30%;
+		text-align:center;
+		margin-left:20px;
+		font-size:30px;
+	}
+</style>
 <head>
 <meta charset="UTF-8">
 <title>Choose Project</title>
@@ -32,6 +69,7 @@
       
       --%>   
    });
+   
    function chooseProject(){
 	   var prj = document.querySelector("[name=projects]");
 		if (prj.value=="sel")
@@ -43,25 +81,25 @@
 			location.href="${path}/joinProjectPage.do";
 		}
 		else{
-			location.href="${path}/Project1.do";
+			
+			location.href="${path}/Main.do?pno="+pno;
 		}
 	}
 </script>
 </head>
 
 <body>
-<div class="jumbotron text-center">
-  <h2>프로젝트 선택</h2>
-
-</div>
-<div class="container">
-    프로젝트 선택:<select name='projects'>
+  <h1 class="page_title">참가할 프로젝트 선택</h1>
+<div class="prjSel">
+    프로젝트 선택<select name='projects' class="prjSel selOpt">
       <option value='sel' selected>-- 선택 --</option>
  	   <c:forEach var="pj" items="${plist}">
          <option value="${pj.title}">${pj.title}</option>
+         <script>var pno = ${pj.pno}</script>
       </c:forEach>
       <option value="new">새 프로젝트</option>
-      <input type="button" id="btnSel" onclick="chooseProject()" value="선택">
+
+      <input type="button" class="prjSel selBtn" onclick="chooseProject()" value="선택">
 </div>
 </body>
 </html>

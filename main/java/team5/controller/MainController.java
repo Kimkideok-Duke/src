@@ -22,7 +22,7 @@ public class MainController {
 	// http://localhost:7080/team5/Main.do
 	// http://220.73.54.156:8080/Team5/Main.do
 	@RequestMapping("Main.do")
-	public String Main(@RequestParam(value = "pno", defaultValue = "2") int pno, Model d){
+	public String Main(@RequestParam("pno") int pno, Model d){
 		d.addAttribute("slist", service.getScheduleList(pno));
 		return "WEB-INF\\views\\Main.jsp";
 	}

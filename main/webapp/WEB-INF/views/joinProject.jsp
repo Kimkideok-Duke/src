@@ -12,6 +12,53 @@
 
  --%>
 <html>
+<style type="text/css">
+	body{
+		background-color:rgb(247,247,247);
+	}
+	.page_title{
+		text-align:center;
+		margin-top:150px;
+		margin-bottom:50px;
+		color:rgb(22,160,133);
+		font-size:60px;
+		font-weight:bold;
+	}
+    .joinPrj{
+		width:70%;
+		height:auto;
+		margin-top:80px;
+		margin-left:220px;
+		font-size:30px;
+	}
+	.code{
+		width:50%;
+		height:auto;
+		margin-top:80px;
+		margin-left:10px;
+		text-align:center;
+	}
+	.join{
+		background-color:rgb(46, 204, 113);
+		margin-left:30px;
+		width:20%;
+		color:white;
+		border:none;
+		font-size:30px;
+	}
+	.join:hover{
+		background-color:#4CAF50;
+	}
+	.crt{
+		background-color:rgb(46, 204, 113);
+		color:white;
+		border:none;
+		margin-left:140px;
+	}
+	.crt:hover{
+		background-color:#4CAF50;
+	}
+</style>
 <head>
 <meta charset="UTF-8">
 <title>Join Project</title>
@@ -45,19 +92,17 @@
 </head>
 
 <body>
-<div class="jumbotron text-center">
-  <h2>새 프로젝트 생성/선택</h2>
-</div>
-<div class="container">
-    <input type="text" name="code" placeholder="Enter CODE">
-    <input type="button" onclick="joinProject()" value="JOIN"><br>
-    <input type="button" onclick="createProject()" value="새프로젝트 생성">
+  <h1 class="page_title">새 프로젝트 생성/선택</h1>
+<div class="joinPrj">
+    프로젝트 코드 입력 <input type="text" class="joinPrj code" name="code" placeholder="전달받은 코드를 입력해주세요.">
+    <input type="button" class="joinPrj join" onclick="joinProject()" value="참가"><br>
+    <input type="button" class="joinPrj crt" onclick="createProject()" value="새프로젝트 생성">
 </div>
 <script>
 var isJoin = "${isJoin}"
 if(isJoin=="Y"){
    var pno = "${pno}"
-   location.href="${path}/Project1.do"    // 임시로 Project1
+   location.href="${path}/Main.do?pno="+pno    // 임시로 Project1
 }
 </script>
 </body>

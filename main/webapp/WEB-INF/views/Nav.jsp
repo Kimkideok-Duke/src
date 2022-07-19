@@ -162,7 +162,7 @@ td {
     <li><a href="#" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
     
     <div style="padding-top:100px;">
-    <li><a href="#" class="icon" ><img src="a00_com/img/add.png" width=25px> 팀원추가</a></li>
+    <li><a href="#" class="icon" ><img src="a00_com/img/add.png" width=25px> 팀원관리</a></li>
     <li><a href="${path}/mypage2.do" class="icon" ><img src="a00_com/img/mypage.png" width=25px> 마이페이지</a></li>
     <li><a href="${path}/logout.do" class="icon" >로그아웃</a></li>
     </div>

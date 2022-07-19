@@ -4,7 +4,7 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team5.dao.ProjectDao">
 	<select id="getProjectList" resultType="projectmemberjoin" parameterType="int">
-		SELECT TITLE, p.PNO 
+		SELECT TITLE, p.PNO
 		FROM PROJECT p, MEMBER m 
 		WHERE p.PNO = m.PNO
 		AND USERNO = #{userno}
