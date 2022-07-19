@@ -26,6 +26,12 @@ public Log DetailLog(int itemno){
 	}
 public List<Log> selectLd(int itemno) {
 	return dao.selectLd(itemno);
-}	
+}
+public void ck_update(Schedule ins){
+	 dao.ck_update(ins);    
+}
+public void ck_data01(int itemno) {
+  dao.ck_data01(itemno); 
+}
 	
 }

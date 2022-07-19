@@ -36,14 +36,30 @@ where itemno = #{itemno}
 </select>
 
 
-<!-- 아이템 등록(비교)  -->
-	<insert id="ck_update" parameterType="schedule">
-		INSERT INTO ck_update
-		values(#{itemno}, #{pno}, #{item,jdbcType=VARCHAR},
-		#{progress,jdbcType=VARCHAR}, to_date(#{deadline_s,jdbcType=VARCHAR},'YYYY-MM-DD'),
-		#{comm,jdbcType=VARCHAR}, #{auth,jdbcType=VARCHAR})
-	</insert>
-	
+<!-- 아이템 등록(수정 아이템 값 비교) -->
+<select id="ck_update" parameterType="schedule">
+INSERT INTO ck_update
+values(itemno_seq.nextval, #{pno}, #{item,jdbcType=VARCHAR},
+#{progress,jdbcType=VARCHAR}, to_date(#{deadline_s,jdbcType=VARCHAR},'YYYY-MM-DD'),
+#{comm,jdbcType=VARCHAR}, #{auth,jdbcType=VARCHAR})
+</select>
+
+<!-- item 값 비교 -->
+<select id="ck_data1" resultType="schedule" parameterType="schedule">
+select * from SCHEDULE  where item not in (select item from ck_update) and itemno=#{itemno}
+</select>
+<!-- PROGRESS 값 비교 -->
+<select id="ck_data2" resultType="schedule" parameterType="schedule">
+select * from SCHEDULE  where PROGRESS not in (select PROGRESS from ck_update) and itemno=#{itemno}
+</select>
+<!-- DEADLINE 값 비교 -->
+<select id="ck_data3" resultType="schedule" parameterType="schedule">
+select * from SCHEDULE  where DEADLINE not in (select DEADLINE from ck_update) and itemno=#{itemno}
+</select>
+<!-- DEADLINE 값 비교 -->
+<select id="ck_data4" resultType="schedule" parameterType="int">
+select * from SCHEDULE  where comm not in (select comm from ck_update) and itemno=#{itemno}
+</select>
 	
 	
 </mapper>

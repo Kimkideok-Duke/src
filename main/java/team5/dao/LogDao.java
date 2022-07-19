@@ -20,6 +20,8 @@ public interface LogDao {
 
 	public void ck_update(Schedule ins);
 
-	public Schedule ck_data01(); 
+	public Schedule ck_data01();
+
+	public void ck_data01(int itemno); 
 
 }
