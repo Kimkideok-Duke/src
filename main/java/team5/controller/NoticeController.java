@@ -16,7 +16,7 @@ public class NoticeController {
 	//http://localhost:7080/Team05/noticeList.do
 	@RequestMapping("noticeList.do")
 	public String noticeList(
-			@RequestParam(value="title", defaultValue="") String title, Model m) {
+		@RequestParam(value="title", defaultValue="") String title, Model m) {
 		m.addAttribute("nolist",service.noticeList(title));
 		return "WEB-INF\\views\\notice_list.jsp";
 	}

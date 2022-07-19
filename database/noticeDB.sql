@@ -53,11 +53,11 @@ FROM schedule s, participate p, project prj, MEMBER m
 WHERE prj.pno = s.pno AND s.itemno = p.itemno AND m.pno = prj.pno
 AND m.userno = #{userno}
 AND m.pno = #{pno}
-AND PROGRESS = '기본';
+AND PROGRESS = #{progress};
 
 SELECT m.userno, prj.TITLE, s.item, s.progress
 FROM schedule s, participate p, project prj, MEMBER m
 WHERE prj.pno = s.pno AND s.itemno = p.itemno AND m.pno = prj.pno
-AND m.userno = #{userno}
-AND m.pno = #{pno}
-AND sysdate between DEADLINE and DATE_ADD(DEADLINE ,INTERVAL 3 DAY) ;
+AND m.userno = 10001
+AND m.pno = 2
+AND sysdate between s.DEADLINE and DATE_ADD(s.DEADLINE, INTERVAL 3 DAY);

@@ -18,7 +18,67 @@
 <link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css" >
 <link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
 <style>
-   td{text-align:center;}
+h1 {
+  text-align: center;
+  margin:20px;
+}
+.out {
+  margin:0 0 20px 0;
+}
+.psty {
+  color: #464d48;
+  font-size: 20px;
+  font-weight: bold;
+}
+table.type09 {
+  border-collapse: collapse;
+  text-align: left;
+  line-height: 1.5;
+  width: 600px;
+  margin: auto;
+
+}
+table.type09 thead th {
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  color: #464d48;
+  border-bottom: 3px solid #8fbd9b;
+}
+table.type09 tbody th {
+  width: 150px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+  background: #f3f6f7;
+}
+table.type09 td {
+  width: 350px;
+  padding: 10px;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+  height : 300px;
+}
+.button{
+  float: right;
+	background-Color:#7cc290;
+	border: 3px solid #7cc290;
+	border-radius: 5px;
+	text-align: center;
+	margin:5px 0 0 5px;
+	width : 70px;
+	font-size: 13px;
+}
+.button:hover{
+  background-Color: #65a678;
+}
+.my-box { 
+	border:1px solid; 
+	padding:50px; 
+	margin:auto;
+	width: 700px;
+}
 </style>
 <script src="${path}/a00_com/jquery.min.js"></script>
 <script src="${path}/a00_com/popper.min.js"></script>
@@ -49,12 +109,16 @@
 	}
 </script>
 <body>
-<div><h2>공지사항 수정</h2></div>
-	<form>
-		<p><input type="hidden" name="noticeno" value="${notice.noticeno}">
-		<p><textarea cols="100" rows="1" name="title">${notice.title }</textarea></p>
-		<p><textarea cols="100" rows="30" name="content">${notice.content }</textarea></p>
-		<input type="button" value="수정완료" onclick="goupdate()">
-	</form>
+	<div class="out">
+		<h1>공지사항 수정</h1>
+			<form>
+				<div class="my-box">
+				<p><input type="hidden" name="noticeno" value="${notice.noticeno}">
+				<p class="psty">제목 </p><textarea cols="80" rows="1" name="title">${notice.title }</textarea>
+				<p class="psty">내용 </p><textarea cols="80" rows="15" name="content">${notice.content }</textarea>
+				<input type="button" value="수정완료" onclick="goupdate()" class="button">
+				</div>
+			</form>
+	</div>	
 </body>
 </html>

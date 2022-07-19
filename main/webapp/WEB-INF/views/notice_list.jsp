@@ -16,13 +16,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-h2 {
+h1 {
   text-align: center;
+  margin:20px;
 }
-#head {
-  position: fixed;
-  width: 50%;
-  box-sizing: border-box;
+.out {
+  margin:0 0 20px 0;
 }
 table.type09 {
   border-collapse: collapse;
@@ -55,10 +54,30 @@ table.type09 td {
 }
 tr:hover{
   background: #f3f6f7;
-}/*
-button{
+}
+.button{
   float: right;
-}*/
+	background-Color:#7cc290;
+	border: 3px solid #7cc290;
+	border-radius: 5px;
+	text-align: center;
+	margin:0 0 0 5px;
+	width : 55px;
+	font-size: 13px;
+}
+.button:hover{
+  background-Color: #65a678;
+}
+.my-box { 
+	border:1px solid; 
+	padding:50px; 
+	margin:auto;
+	width: 700px;
+}
+form{
+	float: right;
+	display:block;
+}
 </style>
 
 </head>
@@ -69,28 +88,31 @@ button{
 	function goWrite(){
 		location.href="${path}/noticeGoWrite.do";
 	}
-	$(#schBtn).css("{height:10px, width:10px}")
 </script>
 <%=session.getAttribute("userId")%>
 <%=session.getAttribute("pno")%>
 <body>
-<div><h2>공지사항</h2></div>
-	<form action="${path}/noticeList.do">
-		<input name="title" placeholder="제목" value="${notice.title}">
-		<button type="submit" value="검색" class="schBtn"></button>
-	</form>
-		<div id="head">
-			<table class="type09">
-			<thead>
-			<tr><th>No.</th><th>제목</th><th>작성자</th><th>작성일자</th><th>조회수</th></tr>
-			</thead>
-			<tbody>
-			<c:forEach var="nl" items="${nolist}">
-			<tr ondblclick="goDetail(${nl.noticeno})"><td>${nl.noticeno}</td><td>${nl.title}</td><td>호스트</td><td><fmt:formatDate value="${nl.creatdate}"/></td><td>${nl.views}</td></tr>
-			</c:forEach>
-			</tbody>
-			</table>
-			<input type="button" value="글등록" onclick="goWrite()" style="float: right">
-		</div>
+
+	<div class="out">
+		<h1>공지사항</h1>
+		<div class="my-box">
+		<form action="${path}/noticeList.do">
+			<input name="title" placeholder="제목" value="${notice.title}">
+			<input type="submit" value="검색" class="button">
+		</form>
+			
+				<table class="type09">
+				<thead>
+				<tr><th>No.</th><th>제목</th><th>작성자</th><th>작성일자</th><th>조회수</th></tr>
+				</thead>
+				<tbody>
+				<c:forEach var="nl" items="${nolist}">
+				<tr ondblclick="goDetail(${nl.noticeno})"><td>${nl.noticeno}</td><td>${nl.title}</td><td>호스트</td><td><fmt:formatDate value="${nl.creatdate}"/></td><td>${nl.views}</td></tr>
+				</c:forEach>
+				</tbody>
+				</table>
+				<input type="button" value="글등록" onclick="goWrite()" class="button" style="margin:5px 0 0 0;">
+			</div>
+		</div>		
 </body>
 </html>
