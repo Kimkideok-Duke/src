@@ -10,7 +10,7 @@ import team5.vo.Schedule;
 @Repository
 public interface LogDao {
 	
-	public Log insertLog(Schedule ins);
+	public void insertLog(Schedule upt);
 
 	public List<Log> logList(String item);
 	

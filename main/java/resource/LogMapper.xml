@@ -5,11 +5,11 @@
 <mapper namespace="team5.dao.LogDao">
 
 <!-- 로그 등록 -->
-<insert id="insertLog"  parameterType="log">
+<insert id="insertLog"  parameterType="schedule">
 insert into log
 values 
 ((SELECT NVL(MAX(logno), 0) + 1 FROM log),#{itemno}, 
-#{pno} , #{userno} , #{logDate},#{category})
+#{pno} , #{userno} , DEFAULT)
 </insert>	
 
 <!-- 일정 아이템명 추출 -->

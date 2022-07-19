@@ -41,7 +41,6 @@ public class MainController {
 	@RequestMapping("insertSchedule.do")
 	public String insertSchedule(@RequestParam("userno") int itemno,Schedule ins, Model d){
 		service.insertSchedule(ins);
-		d.addAttribute("inLog", service01.insertLog(ins));
 		d.addAttribute("isInsert","Y");
 		return "WEB-INF\\views\\insertSchedule.jsp";
 	}
@@ -49,6 +48,7 @@ public class MainController {
 	@RequestMapping("updateSchedule.do")
 	public String updateSchedule(Schedule upt, Model d){
 		d.addAttribute("schedule",service.updateSchedule(upt));
+		service01.insertLog(upt);
 		d.addAttribute("proc","upt");
 		return "WEB-INF\\views\\ScheduleDetail.jsp";
 	}
