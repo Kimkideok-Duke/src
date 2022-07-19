@@ -37,8 +37,8 @@
 	function goMain(){
 		location.href="${path}/Main.do";
 	}
-   function insertProc(pno){
-	   	$("form").attr("action","${path}/insertSchedule.do?"+pno);
+   function insertProc(){
+	   	$("form").attr("action","${path}/insertSchedule.do");
 		$("form").submit();
 	}
 
@@ -59,7 +59,7 @@
 	마감일 <input type="date" name="deadline_s" value="2022-07-01"/>
 	댓글 <input name="comm" value="코멘트123"/>
 	<input type="hidden" name="auth" value="CREATOR"/>
-	<button type="button" onclick="insertProc(${pno})">등록</button>
+	<button type="button" onclick="insertProc()">등록</button>
 	<button type="button" onclick="goMain()">메인화면</button>	
 </form>
 
