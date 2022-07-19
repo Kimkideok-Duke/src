@@ -88,11 +88,11 @@ public class MainController {
 	
 	@RequestMapping("Log.do")
 	public String Log(
-			@RequestParam("itemno") int itemno,
-			@RequestParam("item") String item,
-			               @RequestParam("progress") String progress,
-			               @RequestParam("deadline") String deadline,
-			               @RequestParam("comm") String comm, Model d) {
+		@RequestParam("itemno") int itemno,
+		@RequestParam("item") String item,
+		@RequestParam("progress") String progress,
+		@RequestParam("deadline") String deadline,
+		@RequestParam("comm") String comm, Model d) {
 		d.addAttribute("log",service01.logList(item));
         d.addAttribute("item",item);
 		d.addAttribute("progress", progress);
