@@ -142,7 +142,6 @@ th {
 
 td {
   border-bottom: 2px solid #cccccc;
-  height: 70px;
 }
 	#pwChange_btn{
 		border-radius: 5px;
