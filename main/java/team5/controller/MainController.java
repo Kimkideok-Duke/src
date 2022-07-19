@@ -32,7 +32,8 @@ public class MainController {
 	public String Main(HttpSession session, @RequestParam(value = "pno", defaultValue = "2") int pno, Model d){
 		d.addAttribute("slist", service.getScheduleList(pno));
 		// 권한 설정 (session)
-		session.setAttribute("auth", serviceM.getAuth(new Member((int)session.getAttribute("userNo"), pno)));
+//		session.setAttribute("auth", serviceM.getAuth(new Member((int)session.getAttribute("userNo"), pno)));
+		session.setAttribute("auth", "CREATOR");
 		return "WEB-INF\\views\\Main.jsp";
 	}
 
@@ -47,10 +48,11 @@ public class MainController {
 	}
 	
 	@RequestMapping("insertSchedule.do")
-	public String insertSchedule(@RequestParam(value = "pno") int pno, Schedule ins, Model d){
+	public String insertSchedule(HttpSession session, Schedule ins, Model d){
+		d.addAttribute("pno", session.getAttribute("pno"));
 		service.insertSchedule(ins);
-		service01.insertLog(ins);
-		service01.ck_update(ins);
+//		service01.insertLog(ins);
+//		service01.ck_update(ins);
 		d.addAttribute("isInsert","Y");
 		return "WEB-INF\\views\\insertSchedule.jsp";
 	}
@@ -58,7 +60,7 @@ public class MainController {
 	@RequestMapping("updateSchedule.do")
 	public String updateSchedule(Schedule upt, Model d){
 		d.addAttribute("schedule",service.updateSchedule(upt));
-		service01.insertLog(upt);
+//		service01.insertLog(upt);
 		d.addAttribute("proc","upt");
 		return "WEB-INF\\views\\ScheduleDetail.jsp";
 	}

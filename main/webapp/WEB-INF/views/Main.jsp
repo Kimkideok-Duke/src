@@ -176,14 +176,14 @@ td {
 <body>
 <section id="container">
     <div style="width: 100%; flex-grow: 1; position: relative;">
-<div class="menu">
+<div class="menu" style="height: 150%;">
     <ul>
     <div class="pm_wrapper" onclick="main()"><img src="a00_com/img/PM.png" width=140px></div>
     <li><a href="#" class="icon"><img src="a00_com/img/schedule.png" width=25px> 일정관리</a></li>
     <li><a href="#" class="icon"><img src="a00_com/img/alarm.png" width=25px> 알림</a></li>
     <li><a href="#" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
     
-    <div style="padding-top:100%;">
+    <div>
     <li><a href="${path}/getMemberList.do?pno=${slist.get(0).pno}" class="icon" ><img src="a00_com/img/add.png" width=25px> 팀원관리</a></li>
     <li><a href="${path}/mypage2.do" class="icon" ><img src="a00_com/img/mypage.png" width=25px> 마이페이지</a></li>
     <li><a href="${path}/logout.do" class="icon" >로그아웃</a></li>
@@ -198,7 +198,7 @@ td {
         top: 0;
         right: 0;
         bottom: 0;
-        height: 100%;
+        height: 150%;
         left: 190px;
         overflow: hidden;
        /* justify-content: center;*/
@@ -208,7 +208,7 @@ td {
         border-radius: 20px 0px 0px 0px;">
         
 	<h2>${slist.get(0).pno}번 프로젝트</h2>
-	<button type="button" onclick="goNotice(${slist.get(0).pno})">공지사항</button>
+	<div><button type="button" onclick="goNotice(${slist.get(0).pno})">공지사항</button></div>
 	
 	<table id="scheTable">
 		<tr><th>아이템</th><th>인원</th><th>진행도</th><th>마감일</th><th>댓글</th><th>활동로그</th></tr>

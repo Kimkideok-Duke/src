@@ -50,7 +50,6 @@
 <form method="post">
 	프로젝트 번호<input name="pno" value="${pno}"/>
 	아이템 <input name="item" value="플로우차트"/>
-	인원 
 	진행도 <select name="progress">
 		<option value="기본" selected>기본</option>
 		<option value="진행중">진행중</option>
