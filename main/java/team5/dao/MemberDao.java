@@ -17,4 +17,7 @@ public interface MemberDao {
 	
 	// 멤버 삭제
 	public void deleteMember(Member member);
+	
+	// 권한 조회
+	public String getAuth(Member member);
 }

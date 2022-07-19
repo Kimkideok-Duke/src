@@ -23,4 +23,9 @@ public class MemberService {
 	public void deleteMember(Member member) {
 		dao.deleteMember(member);
 	}
+	
+	// 권한 조회
+	public String getAuth(Member member) {
+		return dao.getAuth(member);
+	}
 }

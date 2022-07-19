@@ -16,6 +16,12 @@
 		WHERE userno = #{userno}
 		AND pno = #{pno}
 	</delete>
+	<select id="getAuth" resultType="string" parameterType="member">
+		SELECT auth
+		FROM MEMBER
+		WHERE userno = #{userno}
+		AND pno = #{pno}
+	</select>
 </mapper>
 
 

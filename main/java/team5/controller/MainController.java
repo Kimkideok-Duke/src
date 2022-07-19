@@ -1,5 +1,7 @@
 package team5.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import team5.service.LogService;
 import team5.service.MainService;
+import team5.service.MemberService;
 import team5.vo.Log;
+import team5.vo.Member;
 import team5.vo.Schedule;
 
 @Controller
@@ -19,11 +23,16 @@ public class MainController {
 	@Autowired(required=false)
 	private LogService service01;
 	
+	@Autowired(required=false)
+	private MemberService serviceM;	
+	
 	// http://localhost:7080/team5/Main.do
 	// http://220.73.54.156:8080/Team5/Main.do
 	@RequestMapping("Main.do")
-	public String Main(@RequestParam("pno") int pno, Model d){
+	public String Main(HttpSession session, @RequestParam("pno") int pno, Model d){
 		d.addAttribute("slist", service.getScheduleList(pno));
+		// 권한 설정
+		d.addAttribute("auth", serviceM.getAuth(new Member((int)session.getAttribute("userNo"), pno)));
 		return "WEB-INF\\views\\Main.jsp";
 	}
 
