@@ -56,12 +56,15 @@
    function goInsert(){
 		location.href="${path}/Insert.do";
 	}
+   function goNotice(pno){
+		location.href="${path}/noticeList.do?pno="+pno;
+	}
 </script>
 </head>
 
 <body>
 	<h2>${slist.get(0).pno}번 프로젝트</h2>
-	<h3>공지사항 어쩌구저쩌구</h3>
+	<button type="button" onclick="goNotice(${slist.get(0).pno})">공지사항</button>
 	
 	<table id="scheTable">
 		<tr><th>아이템</th><th>인원</th><th>진행도</th><th>마감일</th><th>댓글</th></tr>
@@ -72,7 +75,7 @@
 		</c:forEach>
 	</table>
 	
-	<form method="get">
+	<form method="post">
 		<button type="button" onclick="goInsert()">등록페이지</button>
 	</form>
 	
