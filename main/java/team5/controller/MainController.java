@@ -29,7 +29,7 @@ public class MainController {
 	// http://localhost:7080/team5/Main.do
 	// http://220.73.54.156:8080/Team5/Main.do
 	@RequestMapping("Main.do")
-	public String Main(HttpSession session, @RequestParam("pno") int pno, Model d){
+	public String Main(HttpSession session, @RequestParam(value = "pno", defaultValue = "2") int pno, Model d){
 		d.addAttribute("slist", service.getScheduleList(pno));
 		// 권한 설정 (session)
 		session.setAttribute("auth", serviceM.getAuth(new Member((int)session.getAttribute("userNo"), pno)));
@@ -47,7 +47,7 @@ public class MainController {
 	}
 	
 	@RequestMapping("insertSchedule.do")
-	public String insertSchedule(Schedule ins, Model d){
+	public String insertSchedule(@RequestParam(value = "pno") int pno, Schedule ins, Model d){
 		service.insertSchedule(ins);
 		service01.insertLog(ins);
 		service01.ck_update(ins);

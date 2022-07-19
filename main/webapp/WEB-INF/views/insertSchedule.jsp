@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아이템 등록</title>
 <link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css" >
 <link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
 <style>
@@ -37,8 +37,8 @@
 	function goMain(){
 		location.href="${path}/Main.do";
 	}
-   function insertProc(){
-	   	$("form").attr("action","${path}/insertSchedule.do");
+   function insertProc(pno){
+	   	$("form").attr("action","${path}/insertSchedule.do?"+pno);
 		$("form").submit();
 	}
 
@@ -48,7 +48,7 @@
 <body>
 
 <form method="post">
-	프로젝트 번호<input name="pno" value="2"/>
+	프로젝트 번호<input name="pno" value="${pno}"/>
 	아이템 <input name="item" value="플로우차트"/>
 	인원 
 	진행도 <select name="progress">
@@ -60,7 +60,7 @@
 	마감일 <input type="date" name="deadline_s" value="2022-07-01"/>
 	댓글 <input name="comm" value="코멘트123"/>
 	<input type="hidden" name="auth" value="CREATOR"/>
-	<button type="button" onclick="insertProc()">등록</button>
+	<button type="button" onclick="insertProc(${pno})">등록</button>
 	<button type="button" onclick="goMain()">메인화면</button>	
 </form>
 
