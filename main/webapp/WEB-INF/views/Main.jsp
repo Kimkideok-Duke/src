@@ -176,12 +176,12 @@ td {
 <body>
 <section id="container">
     <div style="width: 100%; flex-grow: 1; position: relative;">
-<div class="menu" style="height: 150%;">
+<div class="menu" style="height: 120%;">
     <ul>
     <div class="pm_wrapper" onclick="main()"><img src="a00_com/img/PM.png" width=140px></div>
-    <li><a href="#" class="icon"><img src="a00_com/img/schedule.png" width=25px> 일정관리</a></li>
-    <li><a href="#" class="icon"><img src="a00_com/img/alarm.png" width=25px> 알림</a></li>
-    <li><a href="#" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
+    <li><a href="${path}/Main.do" class="icon"><img src="a00_com/img/schedule.png" width=25px> 일정관리</a></li>
+    <li><a href="${path}/getAlert.do" class="icon"><img src="a00_com/img/alarm.png" width=25px> 알림</a></li>
+    <li><a href="${path}/noticeList.do?pno=${slist.get(0).pno}" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
     
     <div>
     <li><a href="${path}/getMemberList.do?pno=${slist.get(0).pno}" class="icon" ><img src="a00_com/img/add.png" width=25px> 팀원관리</a></li>
