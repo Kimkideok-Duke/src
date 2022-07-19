@@ -72,7 +72,7 @@
 		<tr ondblclick="goDetail(${schedule.itemno})"><td>${schedule.item}</td>
 		<td><img src="${path}/a00_com/member.jpg" height="30" width="30"/></td><td>${schedule.progress}</td>
 		<td>${schedule.deadline}</td><td>${schedule.comm}</td>
-		<td onclick="goLog('${schedule.item}','${schedule.progress}','${schedule.deadline}','${schedule.comm}')">
+		<td onclick="goLog('${schedule.item}','${schedule.progress}','${schedule.deadline}','${schedule.comm}','${schedule.itemno}')">
 		<img src="${path}/a00_com/img/log.png" height="25" width="25">
 		</tr>
         </c:forEach>
@@ -99,9 +99,9 @@
    function goInsert(){
 		location.href="${path}/Insert.do";
 	}
-   function goLog(item,progress,deadline,comm){
+   function goLog(item,progress,deadline,comm,itemno){
 	   location.href="${path}/Log.do?item="+item+"&progress="+progress
-			   +"&deadline="+deadline+"&comm="+comm;
+			   +"&deadline="+deadline+"&comm="+comm+"&itemno="+itemno;
    }
 </script>
 

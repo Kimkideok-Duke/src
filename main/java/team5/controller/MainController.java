@@ -19,7 +19,7 @@ public class MainController {
 	@Autowired(required=false)
 	private LogService service01;
 	
-	// http://localhost:7080/Team5/Main.do
+	// http://localhost:7080/team5/Main.do
 	// http://220.73.54.156:8080/Team5/Main.do
 	@RequestMapping("Main.do")
 	public String Main(@RequestParam(value = "pno", defaultValue = "2") int pno, Model d){
@@ -77,7 +77,9 @@ public class MainController {
 	}	
 	
 	@RequestMapping("Log.do")
-	public String Log(@RequestParam("item") String item,
+	public String Log(
+			@RequestParam("itemno") int itemno,
+			@RequestParam("item") String item,
 			               @RequestParam("progress") String progress,
 			               @RequestParam("deadline") String deadline,
 			               @RequestParam("comm") String comm, Model d) {
@@ -85,7 +87,8 @@ public class MainController {
         d.addAttribute("item",item);
 		d.addAttribute("progress", progress);
 		d.addAttribute("deadline", deadline);
-		d.addAttribute("comm", comm);	
+		d.addAttribute("comm", comm);
+		d.addAttribute("inlog",service01.selectLd(itemno));
 		return "WEB-INF\\views\\Log.jsp";
 	}
 

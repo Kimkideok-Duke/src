@@ -28,6 +28,11 @@ WHERE l.itemno = s.ITEMNO(+)
 AND l.itemno =#{itemno};
 </select>
 
-
+<!-- 로그시간 추출 -->
+<select id="selectLd" parameterType="int" resultType="log">
+select logDate
+from log
+where itemno = #{itemno}
+</select>
 
 </mapper>

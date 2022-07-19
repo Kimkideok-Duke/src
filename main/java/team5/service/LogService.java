@@ -23,6 +23,9 @@ public class LogService {
 	
 public Log DetailLog(int itemno){	
 		return dao.DetailLog(itemno);
-	}	
+	}
+public List<Log> selectLd(int itemno) {
+	return dao.selectLd(itemno);
+}	
 	
 }

@@ -187,10 +187,10 @@ td {
     <c class="content">
 
 	<table>
-	<c:forEach var="schedule" items="${slist}">
 	<tr><th>활동시간</th><th>카테고리</th><th>활동내역</th></tr>
-	<tr><td><fmt:formatDate value="${inLog.logdate}" pattern="YY-MM-dd  hh:mm:ss"/></td>
-	<td >${schedule.comm}</td><td></td></tr>
+	<c:forEach var="inlog" items="${inlog}">	
+	<tr><td><fmt:formatDate value="${inlog.logDate}" pattern="YY-MM-dd  hh:mm:ss"/></td>
+	<td ></td><td></td></tr>
 	</c:forEach>
 	</table>
 	</c>

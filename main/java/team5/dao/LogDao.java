@@ -16,4 +16,6 @@ public interface LogDao {
 	
 	public Log DetailLog(int itemno);
 
+	public List<Log> selectLd(int itemno);
+
 }
