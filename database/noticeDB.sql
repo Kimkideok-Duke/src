@@ -25,6 +25,9 @@ INSERT INTO notice VALUES(notice_seq.nextval,2,'안녕하세요','내용',sysdat
 INSERT INTO notice VALUES(notice_seq.nextval,2,'제목2','내용',sysdate,0);
 INSERT INTO notice VALUES(notice_seq.nextval,2,'제목3','내용',sysdate,0);
 INSERT INTO notice VALUES(notice_seq.nextval,2,'제목4','내용',sysdate,0);
+INSERT INTO notice VALUES(notice_seq.nextval,21,'제목80','dkdksldk',sysdate,0);
+INSERT INTO notice VALUES(notice_seq.nextval,21,'제wpahr','내애애앵용',sysdate,0);
+
 -- noticeno로 테이블 조회
 SELECT* FROM notice
 WHERE noticeno=1;

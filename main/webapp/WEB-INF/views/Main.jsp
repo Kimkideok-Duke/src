@@ -71,7 +71,6 @@
 		<c:forEach var="schedule" items="${slist}">
 		<tr ondblclick="goDetail(${schedule.itemno})"><td>${schedule.item}</td>
 		<td><img src="${path}/a00_com/member.jpg" height="30" width="30"/></td><td>${schedule.progress}</td>
-		<td>인원..</td><td>${schedule.progress}</td>
 		<td>${schedule.deadline}</td><td>${schedule.comm}</td>
 		<td onclick="goLog('${schedule.item}','${schedule.progress}','${schedule.deadline}','${schedule.comm}')">
 		<img src="${path}/a00_com/img/log.png" height="25" width="25">
