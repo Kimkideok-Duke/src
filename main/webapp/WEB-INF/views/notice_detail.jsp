@@ -241,7 +241,8 @@ td {
 	if(proc=="del"){
 		alert("삭제성공\n조회 리스트화면으로 이동!")
 		location.href="${path}/noticeList.do?pno="+${notice.pno };
-	}	
+	}
+
 </script>
 <body>
   <section id="container">
@@ -253,8 +254,8 @@ td {
     <li><a href="#" class="icon"><img src="a00_com/img/alarm.png" width=25px> 알림</a></li>
     <li><a href="${path}/noticeList.do?pno=${notice.pno }" class="icon"><img src="a00_com/img/schedule.png" width=25px> 공지사항</a></li>
     <div style="padding-top:100%;">
-    <li><a href="#" class="icon" ><img src="a00_com/img/add.png" width=25px> 팀원추가</a></li>
-    <li><a href="#" class="icon" ><img src="a00_com/img/mypage.png" width=25px> 마이페이지</a></li>
+    <li><a href="${path}/mypage2.do" class="icon" ><img src="a00_com/img/mypage.png" width=25px> 마이페이지</a></li>
+    <li><a href="${path}/logout.do" class="icon" >로그아웃</a></li>
     </div>
     </ul>
 </div>
