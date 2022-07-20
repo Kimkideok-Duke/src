@@ -222,8 +222,7 @@ td {
 </body>
 <script type="text/javascript">
 function main(){
-	var pno = sessionStorage.getItem("pno");
-	location.href="${path}/Main.do?pno="+pno
+	location.href="${path}/Main.do?pno="+<%=(int)session.getAttribute("pno")%>
 }
 </script>
 <script>

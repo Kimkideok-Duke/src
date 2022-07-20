@@ -22,7 +22,7 @@ public class AccountController {
 	
 	
 	// 로그인 페이지 열기
-	// http://localhost:7080/Team5/login.do
+	// http://localhost:8080/Team5/login.do
 	// 공용서버에서 열기
 	// http://220.73.54.156:8080/Team5/login.do
 	@RequestMapping("login.do")

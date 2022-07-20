@@ -190,7 +190,7 @@ h2 {
 
 <section id="container">
     <div style="width: 100%; flex-grow: 1; position: relative;">
-<div class="menu" style="height: 120%;">
+<div class="menu" style="height: 160%;">
     <ul>
     <div class="pm_wrapper" onclick="main()"><img src="a00_com/img/PM.png" width=140px></div>
     <li><a href="${path}/Main.do" class="icon"><img src="a00_com/img/schedule.png" width=25px> 일정관리</a></li>
@@ -201,6 +201,7 @@ h2 {
     <li><a href="${path}/getMemberList.do?pno=${pno}" class="icon" ><img src="a00_com/img/add.png" width=25px> 팀원관리</a></li>
     <li><a href="${path}/mypage2.do" class="icon" ><img src="a00_com/img/mypage.png" width=25px> 마이페이지</a></li>
     <li><a href="${path}/logout.do" class="icon" >로그아웃</a></li>
+    <li><a href="${path}/chooseProject.do" class="icon" >새프로젝트/다른프로젝트</a></li>
     </div>
     </ul>
 </div>
@@ -251,8 +252,7 @@ h2 {
 
 <script type="text/javascript">
 function main(){
-	var pno = sessionStorage.getItem("pno");
-	location.href="${path}/Main.do?pno="+pno
+	location.href="${path}/Main.do?pno="+<%=(int)session.getAttribute("pno")%>
 }
 
   function goDetail(itemno){

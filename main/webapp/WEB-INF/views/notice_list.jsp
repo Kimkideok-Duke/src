@@ -283,7 +283,7 @@ td {
 </body>
 <script type="text/javascript">
 function main(){
-	location.href="main.do"
+	location.href="${path}/Main.do?pno="+<%=(int)session.getAttribute("pno")%>
 }
 </script>
 </html>
