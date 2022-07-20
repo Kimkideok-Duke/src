@@ -154,6 +154,7 @@
 				dataType:"json",
 				success:function(data){
 					$("#cornum1").val(data.corNum);
+					console.log(data.corNum);
 					alert("인증번호가 전송되었습니다.\n메일 확인 후 인증번호를 입력해주세요");
 				}
 			});
